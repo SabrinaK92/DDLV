@@ -6,352 +6,613 @@
   <title>Disney Dreamlight Valley — La Mer des Souvenirs</title>
   <style>
     :root {
-      --ddlv-sky: #2d5fa8;
-      --ddlv-royal: #3b76c9;
-      --ddlv-champagne: #d4af37;
-      --ddlv-champagne-soft: #f5e6b3;
-      --ddlv-ivory: #faf8f2;
-      --ddlv-surface: #ffffff;
-      --ddlv-ink: #1b2845;
-      --ddlv-muted: #52607a;
-      --ddlv-border: #d8dee9;
-      --ddlv-energy: #1d70b8;
+      --bg-blush: #fdf6f8;
+      --bg-petal: #fceef3;
+      --surface-glass: rgba(255, 255, 255, 0.86);
+      --surface-solid: #ffffff;
+      --rose-poudre: #e8a5b8;
+      --rose-deep: #b85d79;
+      --rose-soft: #f9dfe7;
+      --lilac-soft: #efe6fa;
+      --peach-soft: #fdebe4;
+      --ink-plum: #3b2735;
+      --ink-muted: #7a5c6e;
+      --border-soft: #f0d3de;
+      --shadow-soft: 0 10px 28px rgba(184, 93, 121, 0.12);
+      --energy-pill: #5b7db1;
+      --gold-pill: #b07d3b;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--ddlv-ivory);
-      color: var(--ddlv-ink);
+      font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(160deg, #fdf4f7 0%, #f8eef8 50%, #fdf6f2 100%);
+      color: var(--ink-plum);
+      min-height: 100vh;
       line-height: 1.45;
-      padding: 16px;
     }
 
-    .container { max-width: 1180px; margin: 0 auto; }
-
-    .home-hero {
+    /* === ÉCRAN D'ACCUEIL PLEINE PAGE === */
+    .welcome-screen {
       position: relative;
-      border-radius: 18px;
-      padding: 28px 22px;
-      margin-bottom: 18px;
-      border: 2px solid var(--ddlv-champagne);
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 36px 20px 44px;
       overflow: hidden;
-      background: linear-gradient(135deg, rgba(45, 95, 168, 0.78), rgba(59, 118, 201, 0.72));
-      color: #ffffff;
-      text-align: center;
-      box-shadow: 0 6px 20px rgba(27, 40, 69, 0.08);
+      background: linear-gradient(135deg, #f6d5e1 0%, #e4d4f4 50%, #fbdcd2 100%);
     }
 
-    .home-bg-layer {
+    .welcome-screen.hidden {
+      display: none;
+    }
+
+    .welcome-bg-full {
       position: absolute;
       inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .home-bg-layer img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.34;
+      object-position: center;
+      z-index: 0;
     }
 
-    .home-hero-content {
-      position: relative;
+    .welcome-overlay {
+      position: absolute;
+      inset: 0;
       z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(46, 24, 41, 0.36) 0%,
+        rgba(253, 242, 247, 0.52) 48%,
+        rgba(252, 236, 243, 0.84) 100%
+      );
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
     }
 
-    .home-hero h1 {
-      font-size: 1.75rem;
-      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    .welcome-header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 720px;
+      margin-top: 8px;
+      padding: 20px 28px;
+      border-radius: 26px;
+      background: rgba(255, 248, 251, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1.5px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 32px rgba(92, 43, 68, 0.14);
     }
 
-    .home-hero p {
-      color: #f8fafc;
-      margin-top: 4px;
-      font-size: 0.96rem;
-      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-    }
-
-    .dlc-status-note {
-      display: none;
-      margin: 10px auto 0;
-      max-width: 520px;
-      padding: 6px 10px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.18);
+    .welcome-badge {
+      display: inline-block;
       font-size: 0.78rem;
-      color: #fef9e7;
-    }
-
-    .dlc-status-note.visible { display: block; }
-
-    .main-nav {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .nav-btn {
-      background: rgba(255, 255, 255, 0.94);
-      color: var(--ddlv-ink);
-      border: 2px solid rgba(212, 175, 55, 0.65);
-      border-radius: 12px;
-      padding: 10px 8px;
       font-weight: 700;
-      font-size: 0.88rem;
-      cursor: pointer;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      background: var(--rose-soft);
+      padding: 4px 14px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .welcome-header h1 {
+      font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+      font-weight: 800;
+      color: var(--ink-plum);
+      letter-spacing: -0.01em;
+    }
+
+    .welcome-header p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-weight: 600;
+      color: var(--rose-deep);
+      margin-top: 4px;
+    }
+
+    /* Grille 2 colonnes de grands boutons d'accueil */
+    .home-grid {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 760px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin: auto 0;
+      padding: 24px 0;
+    }
+
+    .home-tile {
+      background: rgba(255, 252, 254, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 2px solid rgba(232, 165, 184, 0.65);
+      border-radius: 22px;
+      padding: 22px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(184, 93, 121, 0.14);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .home-tile:hover {
+      transform: translateY(-3px);
+      background: #ffffff;
+      border-color: var(--rose-deep);
+      box-shadow: 0 14px 30px rgba(184, 93, 121, 0.22);
+    }
+
+    /* Si nombre impair (7 boutons), le dernier s'étire joliment ou reste centré */
+    .home-tile.span-full {
+      grid-column: 1 / -1;
+      max-width: 372px;
+      width: 100%;
+      justify-self: center;
+    }
+
+    .tile-icon-box {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #fce8ef, #f3e8fc);
+      border: 1.5px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.9);
+    }
+
+    .tile-icon-box img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .tile-icon-box .tile-emoji {
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .tile-label {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--ink-plum);
+    }
+
+    .tile-sub {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-top: -6px;
+    }
+
+    /* === VUE INTERNE D'UNE CATÉGORIE === */
+    .app-view {
+      display: none;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 20px 16px 48px;
+    }
+
+    .app-view.active {
+      display: block;
+    }
+
+    .top-bar {
+      background: var(--surface-solid);
+      border: 1.5px solid var(--border-soft);
+      border-radius: 20px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .back-home-btn {
+      background: linear-gradient(135deg, #f9dfe7, #efe4fa);
+      color: var(--ink-plum);
+      border: 1.5px solid var(--rose-poudre);
+      border-radius: 14px;
+      padding: 10px 16px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.15s ease;
+    }
+
+    .back-home-btn:hover {
+      background: var(--rose-soft);
+      border-color: var(--rose-deep);
+    }
+
+    .current-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .current-cat-header img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .current-cat-header h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--ink-plum);
+    }
+
+    /* Barre d'accès rapide entre catégories en haut */
+    .quick-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .quick-pill {
+      background: rgba(255, 255, 255, 0.85);
+      border: 1.5px solid var(--border-soft);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ink-plum);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
       transition: all 0.15s ease;
     }
 
-    .nav-btn:hover {
-      border-color: var(--ddlv-champagne);
-      background: #ffffff;
-    }
-
-    .nav-btn.active {
-      background: var(--ddlv-champagne-soft);
-      color: var(--ddlv-ink);
-      border-color: var(--ddlv-champagne);
-      box-shadow: inset 0 0 0 1px var(--ddlv-champagne);
-    }
-
-    .nav-icon-wrap {
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav-icon-wrap img {
-      width: 28px;
-      height: 28px;
+    .quick-pill img {
+      width: 20px;
+      height: 20px;
       object-fit: contain;
     }
 
-    .nav-emoji {
-      font-size: 1.25rem;
-      line-height: 1;
+    .quick-pill:hover {
+      border-color: var(--rose-poudre);
+      background: #ffffff;
     }
 
-    .toolbar {
-      background: var(--ddlv-surface);
-      border: 1px solid var(--ddlv-border);
-      border-radius: 12px;
-      padding: 12px 14px;
+    .quick-pill.active {
+      background: linear-gradient(135deg, #f7d6e2, #eadcf8);
+      border-color: var(--rose-deep);
+      color: var(--ink-plum);
+    }
+
+    /* Sous-navigation (Hors-d'oeuvre / Plats / Desserts ou Sous l'eau / Fleurs...) */
+    .subcat-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
       margin-bottom: 18px;
+    }
+
+    .subcat-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font-size: 0.94rem;
+      font-weight: 800;
+      color: var(--ink-plum);
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(184, 93, 121, 0.06);
+      transition: all 0.15s ease;
+    }
+
+    .subcat-btn:hover {
+      border-color: var(--rose-poudre);
+      transform: translateY(-1px);
+    }
+
+    .subcat-btn.active {
+      background: linear-gradient(135deg, #f6cedc, #e6d6f7);
+      border-color: var(--rose-deep);
+      color: var(--ink-plum);
+      box-shadow: 0 6px 16px rgba(184, 93, 121, 0.16);
+    }
+
+    /* Barre de recherche & impression */
+    .toolbar {
+      background: var(--surface-solid);
+      border: 1.5px solid var(--border-soft);
+      border-radius: 16px;
+      padding: 12px 14px;
+      margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 14px rgba(184, 93, 121, 0.06);
     }
 
-    .search-group { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 360px; }
+    .search-group {
+      display: flex;
+      flex: 1 1 280px;
+    }
 
     input[type="text"] {
-      flex: 1 1 240px;
-      padding: 9px 12px;
-      border: 1px solid var(--ddlv-border);
-      border-radius: 8px;
-      font-size: 0.92rem;
-      color: var(--ddlv-ink);
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border-soft);
+      border-radius: 12px;
+      font-size: 0.94rem;
+      color: var(--ink-plum);
+      background: #fff9fb;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--rose-deep);
       background: #ffffff;
     }
 
     .print-btn {
-      background: var(--ddlv-royal);
+      background: linear-gradient(135deg, #d87a98, #b86b9e);
       color: #ffffff;
-      border: 1px solid var(--ddlv-champagne);
-      border-radius: 8px;
-      padding: 9px 14px;
+      border: none;
+      border-radius: 12px;
+      padding: 10px 16px;
       font-weight: 700;
       font-size: 0.88rem;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(184, 93, 121, 0.22);
     }
 
-    .welcome-panel {
-      background: var(--ddlv-surface);
-      border: 1px solid var(--ddlv-border);
-      border-left: 4px solid var(--ddlv-champagne);
-      border-radius: 12px;
-      padding: 18px;
-      color: var(--ddlv-muted);
-      font-size: 0.94rem;
+    .print-btn:hover {
+      opacity: 0.94;
     }
 
-    .welcome-panel strong { color: var(--ddlv-ink); }
-
-    .section-title {
-      font-size: 1.22rem;
-      color: var(--ddlv-ink);
-      margin: 20px 0 12px;
-      padding-bottom: 6px;
-      border-bottom: 2px solid var(--ddlv-champagne);
+    /* Grille de fiches */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 16px;
     }
-
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 14px; }
 
     .card {
-      background: var(--ddlv-surface);
-      border: 1px solid var(--ddlv-border);
-      border-radius: 10px;
-      padding: 14px;
+      background: var(--surface-solid);
+      border: 1.5px solid var(--border-soft);
+      border-radius: 18px;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(184, 93, 121, 0.08);
       break-inside: avoid;
       page-break-inside: avoid;
     }
 
-    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .card-title { font-weight: 700; font-size: 1rem; color: var(--ddlv-ink); }
-    .card-sub { font-size: 0.78rem; color: var(--ddlv-muted); font-style: italic; }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .card-title {
+      font-weight: 800;
+      font-size: 1.04rem;
+      color: var(--ink-plum);
+    }
+
+    .card-sub {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      font-style: italic;
+    }
 
     .tag {
-      background: var(--ddlv-champagne-soft);
-      color: #6b5310;
-      border: 1px solid var(--ddlv-champagne);
-      font-size: 0.74rem;
-      font-weight: 700;
-      padding: 2px 7px;
+      background: var(--rose-soft);
+      color: var(--rose-deep);
+      border: 1px solid var(--rose-poudre);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 9px;
       border-radius: 999px;
       white-space: nowrap;
     }
 
     .img-wrap {
       width: 100%;
-      height: 98px;
-      border: 1px solid #e5e7eb;
-      border-radius: 8px;
-      background: #ffffff;
+      height: 112px;
+      border: 1px solid #f5e1e9;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fffcfd 0%, #fdf4f8 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      padding: 6px;
     }
 
-    .img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .img-fallback { display: none; flex-direction: column; align-items: center; text-align: center; font-size: 0.72rem; color: var(--ddlv-muted); padding: 6px; gap: 2px; }
-    .img-wrap.missing .img-fallback { display: flex; }
+    .img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
 
-    .details { font-size: 0.86rem; display: flex; flex-direction: column; gap: 3px; }
+    .img-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--ink-muted);
+      padding: 6px;
+      gap: 2px;
+    }
+
+    .img-wrap.missing .img-fallback {
+      display: flex;
+    }
+
+    .details {
+      font-size: 0.87rem;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: var(--ink-plum);
+    }
+
     .footer-meta {
       display: flex;
       gap: 12px;
-      font-size: 0.84rem;
-      font-weight: 700;
+      font-size: 0.85rem;
+      font-weight: 800;
       margin-top: auto;
-      padding-top: 6px;
-      border-top: 1px solid #f1f5f9;
+      padding-top: 8px;
+      border-top: 1px solid #f7e6ed;
     }
-    .energy { color: var(--ddlv-energy); }
-    .price { color: #9a7412; }
+
+    .energy { color: var(--energy-pill); }
+    .price { color: var(--gold-pill); }
 
     .empty-box {
-      background: var(--ddlv-surface);
-      border: 1px dashed var(--ddlv-border);
-      border-radius: 12px;
-      padding: 22px;
+      background: var(--surface-solid);
+      border: 1.5px dashed var(--rose-poudre);
+      border-radius: 18px;
+      padding: 32px 20px;
       text-align: center;
-      color: var(--ddlv-muted);
+      color: var(--ink-muted);
+      font-weight: 600;
+    }
+
+    @media (max-width: 520px) {
+      .home-grid {
+        gap: 12px;
+      }
+      .home-tile {
+        padding: 18px 12px;
+      }
+      .tile-icon-box {
+        width: 54px;
+        height: 54px;
+      }
+      .tile-icon-box img {
+        width: 36px;
+        height: 36px;
+      }
     }
 
     @media print {
       @page { size: A5 portrait; margin: 8mm; }
-      body { background: #ffffff !important; padding: 0; font-size: 9pt; }
-      .home-hero { background: #ffffff !important; color: #000000 !important; border: 1px solid #000000; padding: 10px; margin-bottom: 8px; box-shadow: none; }
-      .home-bg-layer, .dlc-status-note, .main-nav, .toolbar, .no-print { display: none !important; }
-      .home-hero h1, .home-hero p { color: #000000 !important; text-shadow: none; }
-      .section-title { color: #000000 !important; border-bottom: 1px solid #000000; font-size: 11pt; margin: 10px 0 6px; }
+      body { background: #ffffff !important; padding: 0; font-size: 9pt; color: #000000; }
+      .welcome-screen, .back-home-btn, .quick-switcher, .subcat-bar, .toolbar, .no-print { display: none !important; }
+      .app-view { display: block !important; padding: 0; }
+      .top-bar { border: 1px solid #000000; box-shadow: none; padding: 8px 12px; margin-bottom: 10px; }
       .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .card { border: 1px solid #94a3b8; padding: 8px; background: #ffffff !important; }
+      .card { border: 1px solid #94a3b8; padding: 8px; background: #ffffff !important; box-shadow: none; }
       .card-title { color: #000000 !important; }
-      .img-wrap { height: 62px; border: none; }
+      .img-wrap { height: 62px; border: none; background: #ffffff !important; }
       .img-wrap.missing { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="home-hero">
-      <div class="home-bg-layer">
-        <img id="dlcBgImg" src="dlc_mer_des_souvenirs.jpg" alt="La Mer des Souvenirs" onerror="handleDlcBgError(this);">
-      </div>
 
-      <div class="home-hero-content">
-        <h1>Disney Dreamlight Valley</h1>
-        <p>La Mer des Souvenirs</p>
-        <div id="dlcStatusNote" class="dlc-status-note no-print">
-          Image du DLC attendue : <code>dlc_mer_des_souvenirs.jpg</code> (ou <code>images/accueil/dlc_mer_des_souvenirs.jpg</code>)
+  <!-- 1. ÉCRAN D'ACCUEIL PLEINE PAGE -->
+  <section id="welcomeScreen" class="welcome-screen">
+    <img id="dlcFullBg" class="welcome-bg-full" src="dlc_mer_des_souvenirs.jpg" alt="La Mer des Souvenirs" onerror="handleDlcBgError(this);">
+    <div class="welcome-overlay"></div>
+
+    <div class="welcome-header">
+      <span class="welcome-badge">Guide de collection</span>
+      <h1>Disney Dreamlight Valley</h1>
+      <p>La Mer des Souvenirs</p>
+    </div>
+
+    <div class="home-grid" id="homeGrid">
+      <button class="home-tile" data-cat="bestioles">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
         </div>
+        <span class="tile-label">Bestioles</span>
+        <span class="tile-sub">15 créatures</span>
+      </button>
 
-        <nav class="main-nav" aria-label="Navigation principale">
-          <button class="nav-btn active" data-page="accueil">
-            <span class="nav-icon-wrap" data-icon-base="accueil">
-              <span class="nav-emoji">🏠</span>
-            </span>
-            <span>Accueil</span>
-          </button>
+      <button class="home-tile" data-cat="compagnons">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Compagnons_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐠');">
+        </div>
+        <span class="tile-label">Compagnons</span>
+        <span class="tile-sub">Dory, Polochon, Sébastien</span>
+      </button>
 
-          <button class="nav-btn" data-page="bestioles">
-            <span class="nav-icon-wrap" data-icon-base="Bestioles_icone">
-              <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
-            </span>
-            <span>Bestioles</span>
-          </button>
+      <button class="home-tile" data-cat="recettes">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
+        </div>
+        <span class="tile-label">Recettes</span>
+        <span class="tile-sub">Entrées, plats, desserts</span>
+      </button>
 
-          <button class="nav-btn" data-page="compagnons">
-            <span class="nav-icon-wrap" data-icon-base="Compagnons_icone">
-              <img src="assets/icons/Compagnons_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🤝');">
-            </span>
-            <span>Compagnons</span>
-          </button>
+      <button class="home-tile" data-cat="crafting">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Crafting_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🛠️');">
+        </div>
+        <span class="tile-label">Crafting</span>
+        <span class="tile-sub">Fabrications</span>
+      </button>
 
-          <button class="nav-btn" data-page="recettes">
-            <span class="nav-icon-wrap" data-icon-base="Cuisine_icone">
-              <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
-            </span>
-            <span>Recettes</span>
-          </button>
+      <button class="home-tile" data-cat="poissons">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🎣');">
+        </div>
+        <span class="tile-label">Poissons</span>
+        <span class="tile-sub">Pêche & fruits de mer</span>
+      </button>
 
-          <button class="nav-btn" data-page="crafting">
-            <span class="nav-icon-wrap" data-icon-base="Crafting_icone">
-              <img src="assets/icons/Crafting_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🛠️');">
-            </span>
-            <span>Crafting</span>
-          </button>
+      <button class="home-tile" data-cat="recoltes">
+        <div class="tile-icon-box">
+          <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌸');">
+        </div>
+        <span class="tile-label">Récoltes</span>
+        <span class="tile-sub">Fleurs, matériaux, ingrédients</span>
+      </button>
+    </div>
+  </section>
 
-          <button class="nav-btn" data-page="poissons">
-            <span class="nav-icon-wrap" data-icon-base="Poissons">
-              <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🎣');">
-            </span>
-            <span>Poissons</span>
-          </button>
+  <!-- 2. VUE DE CATÉGORIE -->
+  <div id="appView" class="app-view">
+    <div class="top-bar">
+      <button class="back-home-btn" id="backHomeBtn">← Accueil</button>
+      <div class="current-cat-header" id="currentCatHeader"></div>
+      <button class="print-btn" onclick="window.print()">🖨️ Imprimer en livret A5</button>
+    </div>
 
-          <button class="nav-btn" data-page="recoltes">
-            <span class="nav-icon-wrap" data-icon-base="Cueillette">
-              <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌿');">
-            </span>
-            <span>Récoltes</span>
-          </button>
-        </nav>
-      </div>
-    </header>
+    <div class="quick-switcher" id="quickSwitcher"></div>
+
+    <div id="subcatContainer"></div>
 
     <div class="toolbar">
       <div class="search-group">
-        <input type="text" id="searchInput" placeholder="Rechercher par nom, ingrédient, énergie, prix...">
+        <input type="text" id="searchInput" placeholder="Rechercher dans cette rubrique...">
       </div>
-      <button class="print-btn" onclick="window.print()">🖨️ Imprimer en livret A5 (Fond blanc)</button>
     </div>
 
     <main id="pageContent"></main>
@@ -359,8 +620,27 @@
 
   <script>
     let db = null;
-    let currentPage = "accueil";
+    let currentCat = null;
+    let currentSubCat = null;
     let searchText = "";
+
+    const CATEGORIES = [
+      { id: "bestioles", label: "Bestioles", icon: "assets/icons/Bestioles_icone.webp", emoji: "🐾" },
+      { id: "compagnons", label: "Compagnons", icon: "assets/icons/Compagnons_icone.webp", emoji: "🐠" },
+      { id: "recettes", label: "Recettes", icon: "assets/icons/Cuisine_icone.webp", emoji: "🍽️" },
+      { id: "crafting", label: "Crafting", icon: "assets/icons/Crafting_icone.webp", emoji: "🛠️" },
+      { id: "poissons", label: "Poissons", icon: "assets/icons/Poissons.webp", emoji: "🎣" },
+      { id: "recoltes", label: "Récoltes", icon: "assets/icons/Cueillette.webp", emoji: "🌸" }
+    ];
+
+    const RECETTES_SUBS = ["Hors-d'oeuvre", "Plats principaux", "Desserts"];
+    const RECOLTES_SUBS = [
+      "sous l'eau",
+      "matériaux d'artisanat",
+      "fleurs",
+      "récupération",
+      "ingrédients"
+    ];
 
     function handleDlcBgError(imgEl) {
       if (!imgEl.dataset.triedSub) {
@@ -369,7 +649,6 @@
         return;
       }
       imgEl.style.display = "none";
-      document.getElementById("dlcStatusNote").classList.add("visible");
     }
 
     function tryIconExt(imgEl, exts, fallbackEmoji) {
@@ -380,7 +659,7 @@
         const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
         imgEl.src = `${base}.${exts[idx]}`;
       } else {
-        imgEl.parentElement.innerHTML = `<span class="nav-emoji">${fallbackEmoji}</span>`;
+        imgEl.parentElement.innerHTML = `<span class="tile-emoji">${fallbackEmoji}</span>`;
       }
     }
 
@@ -393,13 +672,31 @@
         .trim();
     }
 
-    function tryAltExt(imgEl, exts) {
-      if (!imgEl.dataset.extIndex) imgEl.dataset.extIndex = "0";
-      const idx = parseInt(imgEl.dataset.extIndex, 10);
-      if (idx < exts.length) {
-        imgEl.dataset.extIndex = String(idx + 1);
-        const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
-        imgEl.src = `${base}.${exts[idx]}`;
+    /* Génère toutes les variantes possibles (NFC, NFD macOS, et extensions .webp/.png/.jpg) */
+    function buildImageCandidates(rawSrc) {
+      const nfc = rawSrc.normalize("NFC");
+      const nfd = rawSrc.normalize("NFD");
+      const forms = nfc === nfd ? [nfc] : [nfc, nfd];
+      const baseNoExtList = forms.map(f => f.replace(/\.(webp|png|jpg|jpeg)$/i, ""));
+      const origExtMatch = rawSrc.match(/\.(webp|png|jpg|jpeg)$/i);
+      const origExt = origExtMatch ? origExtMatch[1].toLowerCase() : "webp";
+      const exts = [origExt, "webp", "png", "jpg"].filter((v, i, a) => a.indexOf(v) === i);
+
+      const candidates = [];
+      for (const ext of exts) {
+        for (const base of baseNoExtList) {
+          candidates.push(encodeURI(`${base}.${ext}`));
+        }
+      }
+      return candidates;
+    }
+
+    function handleImgFallback(imgEl) {
+      const list = JSON.parse(imgEl.dataset.candidates || "[]");
+      let idx = parseInt(imgEl.dataset.candIdx || "1", 10);
+      if (idx < list.length) {
+        imgEl.dataset.candIdx = String(idx + 1);
+        imgEl.src = list[idx];
       } else {
         imgEl.style.display = "none";
         imgEl.parentElement.classList.add("missing");
@@ -407,10 +704,12 @@
     }
 
     function imgBlock(src, alt) {
-      const encoded = encodeURI(src);
+      const candidates = buildImageCandidates(src);
+      const firstSrc = candidates[0] || encodeURI(src);
+      const encodedList = JSON.stringify(candidates).replace(/"/g, "&quot;");
       return `
         <div class="img-wrap">
-          <img src="${encoded}" alt="${alt}" onerror="tryAltExt(this, ['webp', 'png', 'jpg']);">
+          <img src="${firstSrc}" alt="${alt}" data-candidates="${encodedList}" data-cand-idx="1" onerror="handleImgFallback(this);">
           <div class="img-fallback no-print">
             <span>Image absente</span>
             <code>${src}</code>
@@ -426,70 +725,137 @@
       return blob.includes(q);
     }
 
-    function buildSection(title, cardsHtml, emptyText) {
-      if (!cardsHtml.length) {
-        return `
-          <section>
-            <h2 class="section-title">${title}</h2>
-            <div class="empty-box">${emptyText || "Aucun élément pour le moment."}</div>
-          </section>
-        `;
+    function capitalizeFirst(str) {
+      return str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+    }
+
+    function openCategory(catId) {
+      currentCat = catId;
+      searchText = "";
+      document.getElementById("searchInput").value = "";
+
+      if (catId === "recettes") {
+        currentSubCat = RECETTES_SUBS[0];
+      } else if (catId === "recoltes") {
+        currentSubCat = RECOLTES_SUBS[0];
+      } else if (catId === "crafting" && db && db.crafting && db.crafting.length) {
+        const craftCats = [...new Set(db.crafting.map(c => c.categorie).filter(Boolean))];
+        currentSubCat = craftCats[0] || null;
+      } else {
+        currentSubCat = null;
       }
-      return `
-        <section>
-          <h2 class="section-title">${title}</h2>
-          <div class="grid">${cardsHtml.join("")}</div>
-        </section>
+
+      document.getElementById("welcomeScreen").classList.add("hidden");
+      document.getElementById("appView").classList.add("active");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      renderCategoryView();
+    }
+
+    function backToHome() {
+      currentCat = null;
+      currentSubCat = null;
+      document.getElementById("appView").classList.remove("active");
+      document.getElementById("welcomeScreen").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderQuickSwitcher() {
+      const switcher = document.getElementById("quickSwitcher");
+      switcher.innerHTML = CATEGORIES.map(c => `
+        <button class="quick-pill ${c.id === currentCat ? "active" : ""}" data-cat="${c.id}">
+          <img src="${c.icon}" alt="" onerror="this.style.display='none'">
+          <span>${c.label}</span>
+        </button>
+      `).join("");
+
+      switcher.querySelectorAll(".quick-pill").forEach(btn => {
+        btn.addEventListener("click", () => openCategory(btn.dataset.cat));
+      });
+    }
+
+    function renderSubCatButtons() {
+      const container = document.getElementById("subcatContainer");
+      let subs = [];
+
+      if (currentCat === "recettes") {
+        subs = RECETTES_SUBS;
+      } else if (currentCat === "recoltes") {
+        subs = RECOLTES_SUBS;
+      } else if (currentCat === "crafting" && db && db.crafting && db.crafting.length) {
+        subs = [...new Set(db.crafting.map(c => c.categorie).filter(Boolean))];
+      }
+
+      if (!subs.length) {
+        container.innerHTML = "";
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="subcat-bar">
+          ${subs.map(sc => `
+            <button class="subcat-btn ${sc === currentSubCat ? "active" : ""}" data-sub="${sc.replace(/"/g, "&quot;")}">
+              ${capitalizeFirst(sc)}
+            </button>
+          `).join("")}
+        </div>
       `;
+
+      container.querySelectorAll(".subcat-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          currentSubCat = btn.dataset.sub;
+          renderSubCatButtons();
+          renderCards();
+        });
+      });
     }
 
-    function renderBestioles(list) {
-      const items = list.filter(matchesSearch).map(b => `
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <div class="card-title">${b.fr}</div>
-              <div class="card-sub">${b.lieu}</div>
+    function renderCards() {
+      if (!db || !currentCat) return;
+      const target = document.getElementById("pageContent");
+      let cards = [];
+
+      if (currentCat === "bestioles") {
+        cards = db.bestioles.filter(matchesSearch).map(b => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${b.fr}</div>
+                <div class="card-sub">${b.lieu}</div>
+              </div>
+              <span class="tag">${b.comportement}</span>
             </div>
-            <span class="tag">${b.comportement}</span>
-          </div>
-          ${imgBlock(b.image, b.fr)}
-          <div class="details">
-            <div><strong>Apprivoiser :</strong> ${b.debloquer}</div>
-            <div><strong>Approche :</strong> ${b.approche}</div>
-            <div><strong>Nourriture préférée :</strong> ${b.preferee}</div>
-            <div><strong>Nourriture appréciée :</strong> ${b.appreciee}</div>
-            <div><strong>Bonus :</strong> ${b.bonus}</div>
-          </div>
-        </article>
-      `);
-      return buildSection("Bestioles", items);
-    }
-
-    function renderCompagnons(list) {
-      const items = list.filter(matchesSearch).map(c => `
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <div class="card-title">${c.fr}</div>
-              <div class="card-sub">${c.role}</div>
+            ${imgBlock(b.image, b.fr)}
+            <div class="details">
+              <div><strong>Apprivoiser :</strong> ${b.debloquer}</div>
+              <div><strong>Approche :</strong> ${b.approche}</div>
+              <div><strong>Nourriture préférée :</strong> ${b.preferee}</div>
+              <div><strong>Nourriture appréciée :</strong> ${b.appreciee}</div>
+              <div><strong>Bonus :</strong> ${b.bonus}</div>
             </div>
-            <span class="tag">Compagnon</span>
-          </div>
-          ${imgBlock(c.image, c.fr)}
-          <div class="details">
-            <div><strong>Bonus :</strong> ${c.bonus}</div>
-            <div><strong>Notes :</strong> ${c.notes}</div>
-          </div>
-        </article>
-      `);
-      return buildSection("Compagnons d'aventure", items);
-    }
-
-    function renderRecettes(list) {
-      const sousCats = ["Hors-d'oeuvre", "Plats principaux", "Desserts"];
-      return sousCats.map(sc => {
-        const items = list.filter(r => r.sous_categorie === sc && matchesSearch(r)).map(r => `
+          </article>
+        `);
+      } else if (currentCat === "compagnons") {
+        cards = db.compagnons.filter(matchesSearch).map(c => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${c.fr}</div>
+                <div class="card-sub">${c.role}</div>
+              </div>
+              <span class="tag">Compagnon</span>
+            </div>
+            ${imgBlock(c.image, c.fr)}
+            <div class="details">
+              <div><strong>Bonus :</strong> ${c.bonus}</div>
+              <div><strong>Notes :</strong> ${c.notes}</div>
+            </div>
+          </article>
+        `);
+      } else if (currentCat === "recettes") {
+        const filtered = db.recettes.filter(r =>
+          (searchText.trim() ? true : r.sous_categorie === currentSubCat) && matchesSearch(r)
+        );
+        cards = filtered.map(r => `
           <article class="card">
             <div class="card-top">
               <div>
@@ -508,116 +874,90 @@
             </div>
           </article>
         `);
-        return buildSection(`Recettes — ${sc}`, items);
-      }).join("");
-    }
-
-    function renderCrafting(list) {
-      const items = list.filter(matchesSearch).map(cr => `
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <div class="card-title">${cr.fr}</div>
-              <div class="card-sub">${cr.en}</div>
+      } else if (currentCat === "crafting") {
+        const filtered = db.crafting.filter(cr =>
+          (!currentSubCat || searchText.trim() ? true : cr.categorie === currentSubCat) && matchesSearch(cr)
+        );
+        cards = filtered.map(cr => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${cr.fr}</div>
+                <div class="card-sub">${cr.en || ""}</div>
+              </div>
+              <span class="tag">${cr.categorie || "Craft"}</span>
             </div>
-            <span class="tag">${cr.categorie}</span>
-          </div>
-          ${imgBlock(cr.image, cr.fr)}
-          <div class="details">
-            <div><strong>Matériaux :</strong> ${cr.ingredients}</div>
-          </div>
-        </article>
-      `);
-      return buildSection("Crafting", items, "Aucune fabrication ajoutée pour l'instant.");
-    }
-
-    function renderPoissons(list) {
-      const items = list.filter(matchesSearch).map(p => `
-        <article class="card">
-          <div class="card-top">
-            <div>
-              <div class="card-title">${p.fr}</div>
-              <div class="card-sub">${p.type}</div>
+            ${imgBlock(cr.image, cr.fr)}
+            <div class="details">
+              <div><strong>Matériaux :</strong> ${cr.ingredients}</div>
             </div>
-          </div>
-          ${imgBlock(p.image, p.fr)}
-        </article>
-      `);
-      return buildSection("Poissons", items);
-    }
-
-    function renderRecoltes(list) {
-      const cats = [
-        "sous l'eau",
-        "matériaux d'artisanat",
-        "fleurs",
-        "récupération",
-        "ingrédients"
-      ];
-      return cats.map(cat => {
-        const items = list.filter(rec => rec.categorie === cat && matchesSearch(rec)).map(rec => `
+          </article>
+        `);
+      } else if (currentCat === "poissons") {
+        cards = db.poissons.filter(matchesSearch).map(p => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${p.fr}</div>
+                <div class="card-sub">${p.type}</div>
+              </div>
+            </div>
+            ${imgBlock(p.image, p.fr)}
+          </article>
+        `);
+      } else if (currentCat === "recoltes") {
+        const filtered = db.recoltes.filter(rec =>
+          (searchText.trim() ? true : rec.categorie === currentSubCat) && matchesSearch(rec)
+        );
+        cards = filtered.map(rec => `
           <article class="card">
             <div class="card-top">
               <div>
                 <div class="card-title">${rec.fr}</div>
-                <div class="card-sub">${rec.categorie}</div>
+                <div class="card-sub">${capitalizeFirst(rec.categorie)}</div>
               </div>
             </div>
             ${imgBlock(rec.image, rec.fr)}
           </article>
         `);
-        return buildSection(`Récoltes — ${cat}`, items);
-      }).join("");
+      }
+
+      if (!cards.length) {
+        const emptyMsg = currentCat === "crafting" && !db.crafting.length
+          ? "Aucune fabrication ajoutée pour le moment — vos catégories s'afficheront ici dès qu'on ajoutera le craft."
+          : "Aucun élément trouvé dans cette catégorie.";
+        target.innerHTML = `<div class="empty-box">${emptyMsg}</div>`;
+      } else {
+        target.innerHTML = `<div class="grid">${cards.join("")}</div>`;
+      }
     }
 
-    function renderPage() {
-      if (!db) return;
-      const target = document.getElementById("pageContent");
-
-      if (currentPage === "accueil") {
-        target.innerHTML = `
-          <div class="welcome-panel">
-            <strong>Bienvenue sur La Mer des Souvenirs.</strong> Cliquez sur l'une des catégories ci-dessus (Bestioles, Compagnons, Recettes, Crafting, Poissons, Récoltes) ou utilisez la barre de recherche pour afficher les fiches correspondantes.
-          </div>
-        `;
-      } else if (currentPage === "bestioles") {
-        target.innerHTML = renderBestioles(db.bestioles);
-      } else if (currentPage === "compagnons") {
-        target.innerHTML = renderCompagnons(db.compagnons);
-      } else if (currentPage === "recettes") {
-        target.innerHTML = renderRecettes(db.recettes);
-      } else if (currentPage === "crafting") {
-        target.innerHTML = renderCrafting(db.crafting);
-      } else if (currentPage === "poissons") {
-        target.innerHTML = renderPoissons(db.poissons);
-      } else if (currentPage === "recoltes") {
-        target.innerHTML = renderRecoltes(db.recoltes);
-      }
+    function renderCategoryView() {
+      const catMeta = CATEGORIES.find(c => c.id === currentCat);
+      document.getElementById("currentCatHeader").innerHTML = `
+        <img src="${catMeta.icon}" alt="" onerror="this.style.display='none'">
+        <h2>${catMeta.label}</h2>
+      `;
+      renderQuickSwitcher();
+      renderSubCatButtons();
+      renderCards();
     }
 
     fetch("data.json")
       .then(r => r.json())
       .then(data => {
         db = data;
-        renderPage();
       });
 
-    document.querySelectorAll(".nav-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        currentPage = btn.dataset.page;
-        renderPage();
-      });
+    document.querySelectorAll(".home-tile").forEach(tile => {
+      tile.addEventListener("click", () => openCategory(tile.dataset.cat));
     });
+
+    document.getElementById("backHomeBtn").addEventListener("click", backToHome);
 
     document.getElementById("searchInput").addEventListener("input", e => {
       searchText = e.target.value;
-      if (currentPage === "accueil" && searchText.trim()) {
-        currentPage = "recettes";
-        document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.page === "recettes"));
-      }
-      renderPage();
+      renderCards();
     });
   </script>
 </body>
