@@ -3,76 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guide Pratique — La Mer des Souvenirs (DDLV)</title>
+  <title>Disney Dreamlight Valley — La Mer des Souvenirs</title>
   <style>
     :root {
-      --primary: #1d4ed8;
-      --bg: #f8fafc;
+      --ddlv-navy: #142146;
+      --ddlv-blue: #1e3a8a;
+      --ddlv-gold: #d97706;
+      --ddlv-gold-light: #fef3c7;
+      --ddlv-bg: #f4f7fb;
       --card-bg: #ffffff;
       --text: #0f172a;
       --muted: #475569;
       --border: #cbd5e1;
-      --gold: #b45309;
-      --energy: #0369a1;
+      --energy: #0284c7;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+      background: var(--ddlv-bg);
       color: var(--text);
       line-height: 1.45;
-      padding: 18px;
+      padding: 16px;
     }
-    header {
-      max-width: 1140px;
-      margin: 0 auto 22px;
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 20px;
+
+    .container { max-width: 1180px; margin: 0 auto; }
+
+    .home-hero {
+      background: linear-gradient(135deg, var(--ddlv-navy) 0%, var(--ddlv-blue) 100%);
+      color: #ffffff;
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 2px solid #f59e0b;
       text-align: center;
     }
-    header h1 { font-size: 1.55rem; margin-bottom: 6px; }
-    header p { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
-    .controls {
+
+    .home-banner-box {
+      max-width: 560px;
+      height: 150px;
+      margin: 0 auto 16px;
+      border-radius: 12px;
+      border: 2px dashed rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .home-banner-box img { width: 100%; height: 100%; object-fit: cover; }
+    .home-banner-fallback { display: none; flex-direction: column; gap: 4px; font-size: 0.82rem; color: #e2e8f0; padding: 10px; }
+    .home-banner-box.missing .home-banner-fallback { display: flex; }
+
+    .home-hero h1 { font-size: 1.7rem; }
+    .home-hero p { color: #dbeafe; margin-top: 4px; font-size: 0.95rem; }
+
+    .main-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .nav-btn {
+      background: #ffffff;
+      color: var(--ddlv-navy);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 12px 10px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      cursor: pointer;
+    }
+
+    .nav-btn:hover { border-color: #f59e0b; }
+    .nav-btn.active { background: var(--ddlv-gold); color: #ffffff; border-color: #ffffff; }
+    .nav-btn.home-btn { background: rgba(255,255,255,0.14); color: #ffffff; border-color: rgba(255,255,255,0.35); }
+    .nav-btn.home-btn.active { background: #ffffff; color: var(--ddlv-navy); }
+
+    .toolbar {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      margin-bottom: 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
+      gap: 10px;
+      justify-content: space-between;
       align-items: center;
     }
+
+    .search-group { display: flex; flex-wrap: wrap; gap: 8px; flex: 1 1 360px; }
+
     input[type="text"] {
-      padding: 8px 12px;
+      flex: 1 1 240px;
+      padding: 9px 12px;
       border: 1px solid var(--border);
       border-radius: 8px;
-      min-width: 230px;
       font-size: 0.92rem;
     }
-    .filters { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
-    button {
-      padding: 8px 12px;
-      border: 1px solid var(--border);
-      background: #fff;
+
+    .print-btn {
+      background: var(--ddlv-navy);
+      color: #ffffff;
+      border: none;
       border-radius: 8px;
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
       cursor: pointer;
-      font-size: 0.88rem;
-      font-weight: 600;
     }
-    button:hover { background: #f1f5f9; }
-    button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
-    button.print-btn { background: #0f172a; color: #fff; border-color: #0f172a; }
-    main { max-width: 1140px; margin: 0 auto; }
+
     .section-title {
       font-size: 1.25rem;
-      margin: 26px 0 12px;
+      color: var(--ddlv-navy);
+      margin: 22px 0 12px;
       padding-bottom: 6px;
-      border-bottom: 2px solid var(--border);
+      border-bottom: 2px solid var(--ddlv-gold);
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
-      gap: 14px;
-    }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 14px; }
+
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -84,18 +138,23 @@
       break-inside: avoid;
       page-break-inside: avoid;
     }
-    .card-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 8px;
-    }
-    .card-title { font-weight: 700; font-size: 1rem; }
+
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+    .card-title { font-weight: 700; font-size: 1rem; color: var(--ddlv-navy); }
     .card-sub { font-size: 0.78rem; color: var(--muted); font-style: italic; }
-    .stars { color: var(--gold); font-size: 0.9rem; white-space: nowrap; font-weight: 700; }
+    .tag {
+      background: var(--ddlv-gold-light);
+      color: #92400e;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
     .img-wrap {
       width: 100%;
-      height: 105px;
+      height: 98px;
       border: 1px solid #e2e8f0;
       border-radius: 8px;
       background: #ffffff;
@@ -103,25 +162,13 @@
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      position: relative;
     }
-    .img-wrap img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-    .img-fallback {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 0.74rem;
-      color: var(--muted);
-      padding: 6px;
-    }
+
+    .img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .img-fallback { display: none; flex-direction: column; align-items: center; text-align: center; font-size: 0.72rem; color: var(--muted); padding: 6px; gap: 2px; }
     .img-wrap.missing .img-fallback { display: flex; }
-    .details { font-size: 0.87rem; display: flex; flex-direction: column; gap: 3px; }
+
+    .details { font-size: 0.86rem; display: flex; flex-direction: column; gap: 3px; }
     .footer-meta {
       display: flex;
       gap: 12px;
@@ -132,185 +179,289 @@
       border-top: 1px solid #f1f5f9;
     }
     .energy { color: var(--energy); }
-    .price { color: var(--gold); }
+    .price { color: var(--ddlv-gold); }
 
     @media print {
-      @page {
-        size: A5 portrait;
-        margin: 8mm;
-      }
-      body {
-        background: #ffffff !important;
-        padding: 0;
-        font-size: 9pt;
-      }
-      header {
-        border: none;
-        padding: 0 0 8px 0;
-        margin-bottom: 8px;
-      }
-      .controls, .no-print { display: none !important; }
-      .section-title { font-size: 11pt; margin: 12px 0 6px; }
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-      }
-      .card {
-        border: 1px solid #94a3b8;
-        padding: 8px;
-        background: #ffffff !important;
-      }
-      .img-wrap {
-        height: 68px;
-        border: none;
-      }
+      @page { size: A5 portrait; margin: 8mm; }
+      body { background: #ffffff !important; padding: 0; font-size: 9pt; }
+      .home-hero { background: #ffffff !important; color: #000000 !important; border: 1px solid #000000; padding: 10px; margin-bottom: 8px; }
+      .home-hero p { color: #334155 !important; }
+      .home-banner-box.missing { display: none; }
+      .main-nav, .toolbar, .no-print { display: none !important; }
+      .section-title { color: #000000 !important; border-bottom: 1px solid #000000; font-size: 11pt; margin: 10px 0 6px; }
+      .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+      .card { border: 1px solid #94a3b8; padding: 8px; background: #ffffff !important; }
+      .card-title { color: #000000 !important; }
+      .img-wrap { height: 62px; border: none; }
       .img-wrap.missing { display: none; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Disney Dreamlight Valley — La Mer des Souvenirs</h1>
-    <p>Guide pratique : Compagnons, Recettes & Craft (Fond blanc • Format livret A5)</p>
-    <div class="controls">
-      <input type="text" id="search" placeholder="Rechercher un compagnon, plat, craft, ingrédient...">
-      <div class="filters">
-        <button class="active" data-cat="all">Tout</button>
-        <button data-cat="compagnons">Compagnons (3)</button>
-        <button data-cat="hors_doeuvre">Hors-d'œuvre (12)</button>
-        <button data-cat="entrees">Entrées (10)</button>
-        <button data-cat="desserts">Desserts (15)</button>
-        <button data-cat="craft">Craft (6)</button>
+  <div class="container">
+    <header class="home-hero">
+      <div class="home-banner-box" id="dlc-banner">
+        <img src="images/accueil/dlc_mer_des_souvenirs.webp" alt="La Mer des Souvenirs" onerror="tryAltExt(this, ['png', 'jpg']);">
+        <div class="home-banner-fallback no-print">
+          <strong>Image d'accueil du DLC</strong>
+          <code>images/accueil/dlc_mer_des_souvenirs.webp</code>
+        </div>
       </div>
-      <button class="print-btn" onclick="window.print()">🖨️ Imprimer / Livret A5</button>
-    </div>
-  </header>
+      <h1>Disney Dreamlight Valley</h1>
+      <p>La Mer des Souvenirs — Guide pratique</p>
 
-  <main id="content"></main>
+      <nav class="main-nav" aria-label="Navigation principale">
+        <button class="nav-btn home-btn active" data-page="accueil">🏠 Accueil</button>
+        <button class="nav-btn" data-page="bestioles">🐾 Bestioles (15)</button>
+        <button class="nav-btn" data-page="compagnons">🤝 Compagnons (3)</button>
+        <button class="nav-btn" data-page="recettes">🍽️ Recettes (37)</button>
+        <button class="nav-btn" data-page="crafting">🛠️ Crafting (3)</button>
+        <button class="nav-btn" data-page="poissons">🎣 Poissons (12)</button>
+        <button class="nav-btn" data-page="recoltes">🌿 Récoltes (36)</button>
+      </nav>
+    </header>
+
+    <div class="toolbar">
+      <div class="search-group">
+        <input type="text" id="searchInput" placeholder="Rechercher en français ou anglais, ingrédient, énergie, prix...">
+      </div>
+      <button class="print-btn" onclick="window.print()">🖨️ Imprimer en livret A5 (Fond blanc)</button>
+    </div>
+
+    <main id="pageContent"></main>
+  </div>
 
   <script>
-    const sectionLabels = {
-      compagnons: "Compagnons (Animaux)",
-      hors_doeuvre: "Hors-d'œuvre",
-      entrees: "Entrées / Plats principaux",
-      desserts: "Desserts",
-      craft: "Craft & Ressources"
-    };
+    let db = null;
+    let currentPage = "accueil";
+    let searchText = "";
 
-    let guideData = null;
-    let activeCat = "all";
-    let query = "";
+    function normalizeStr(s) {
+      return (s || "")
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+    }
 
-    function renderCard(category, item) {
-      const card = document.createElement("article");
-      card.className = "card";
+    function tryAltExt(imgEl, exts) {
+      if (!imgEl.dataset.extIndex) imgEl.dataset.extIndex = "0";
+      const idx = parseInt(imgEl.dataset.extIndex, 10);
+      if (idx < exts.length) {
+        imgEl.dataset.extIndex = String(idx + 1);
+        const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
+        imgEl.src = `${base}.${exts[idx]}`;
+      } else {
+        imgEl.style.display = "none";
+        imgEl.parentElement.classList.add("missing");
+      }
+    }
 
-      const imgHtml = `
-        <div class="img-wrap" id="box-${item.id}">
-          <img src="${item.image}" alt="${item.fr}" onerror="this.style.display='none'; this.parentElement.classList.add('missing');">
+    function imgBlock(src, alt) {
+      const encoded = encodeURI(src);
+      return `
+        <div class="img-wrap">
+          <img src="${encoded}" alt="${alt}" onerror="tryAltExt(this, ['webp', 'png', 'jpg']);">
           <div class="img-fallback no-print">
             <span>Image absente</span>
-            <code>${item.image}</code>
+            <code>${src}</code>
           </div>
         </div>
       `;
-
-      if (category === "compagnons") {
-        card.innerHTML = `
-          <div class="card-top">
-            <div>
-              <div class="card-title">${item.fr}</div>
-              <div class="card-sub">${item.lieu}</div>
-            </div>
-            <span class="stars">🐾 ${item.comportement}</span>
-          </div>
-          ${imgHtml}
-          <div class="details">
-            <div><strong>Débloquer :</strong> ${item.debloquer}</div>
-            <div><strong>Approche :</strong> ${item.approche}</div>
-            <div><strong>Préférée :</strong> ${item.preferee}</div>
-            <div><strong>Appréciée :</strong> ${item.appreciee}</div>
-            <div><strong>Bonus :</strong> ${item.bonus}</div>
-          </div>
-        `;
-      } else if (category === "craft") {
-        card.innerHTML = `
-          <div class="card-top">
-            <div>
-              <div class="card-title">${item.fr}</div>
-              <div class="card-sub">${item.en}</div>
-            </div>
-            <span class="stars">${item.categorie}</span>
-          </div>
-          ${imgHtml}
-          <div class="details">
-            <div><strong>Ingrédients / Ressources :</strong> ${item.ingredients}</div>
-            <div><strong>Infos :</strong> ${item.notes}</div>
-          </div>
-        `;
-      } else {
-        card.innerHTML = `
-          <div class="card-top">
-            <div>
-              <div class="card-title">${item.fr}</div>
-              <div class="card-sub">${item.en}</div>
-            </div>
-            <span class="stars">${"★".repeat(item.stars)}</span>
-          </div>
-          ${imgHtml}
-          <div class="details">
-            <div><strong>Ingrédients :</strong> ${item.ingredients}</div>
-          </div>
-          <div class="footer-meta">
-            <span class="energy">⚡ ${item.energy}</span>
-            <span class="price">🪙 ${item.price}</span>
-          </div>
-        `;
-      }
-      return card;
     }
 
-    function renderAll() {
-      if (!guideData) return;
-      const container = document.getElementById("content");
-      container.innerHTML = "";
+    function matchesSearch(obj) {
+      if (!searchText.trim()) return true;
+      const q = normalizeStr(searchText);
+      const blob = normalizeStr(JSON.stringify(obj));
+      return blob.includes(q);
+    }
 
-      Object.keys(sectionLabels).forEach(cat => {
-        if (activeCat !== "all" && activeCat !== cat) return;
-        const items = (guideData[cat] || []).filter(entry =>
-          JSON.stringify(entry).toLowerCase().includes(query.toLowerCase())
-        );
-        if (!items.length) return;
+    function buildSection(title, cardsHtml) {
+      if (!cardsHtml.length) return "";
+      return `
+        <section>
+          <h2 class="section-title">${title}</h2>
+          <div class="grid">${cardsHtml.join("")}</div>
+        </section>
+      `;
+    }
 
-        const sec = document.createElement("section");
-        sec.innerHTML = `<h2 class="section-title">${sectionLabels[cat]}</h2>`;
-        const grid = document.createElement("div");
-        grid.className = "grid";
-        items.forEach(item => grid.appendChild(renderCard(cat, item)));
-        sec.appendChild(grid);
-        container.appendChild(sec);
-      });
+    function renderBestioles(list) {
+      const items = list.filter(matchesSearch).map(b => `
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">${b.fr}</div>
+              <div class="card-sub">${b.lieu}</div>
+            </div>
+            <span class="tag">${b.comportement}</span>
+          </div>
+          ${imgBlock(b.image, b.fr)}
+          <div class="details">
+            <div><strong>Apprivoiser :</strong> ${b.debloquer}</div>
+            <div><strong>Approche :</strong> ${b.approche}</div>
+            <div><strong>Nourriture préférée :</strong> ${b.preferee}</div>
+            <div><strong>Nourriture appréciée :</strong> ${b.appreciee}</div>
+            <div><strong>Bonus :</strong> ${b.bonus}</div>
+          </div>
+        </article>
+      `);
+      return buildSection("Bestioles", items);
+    }
+
+    function renderCompagnons(list) {
+      const items = list.filter(matchesSearch).map(c => `
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">${c.fr}</div>
+              <div class="card-sub">${c.role}</div>
+            </div>
+            <span class="tag">Compagnon</span>
+          </div>
+          ${imgBlock(c.image, c.fr)}
+          <div class="details">
+            <div><strong>Bonus :</strong> ${c.bonus}</div>
+            <div><strong>Notes :</strong> ${c.notes}</div>
+          </div>
+        </article>
+      `);
+      return buildSection("Compagnons d'aventure", items);
+    }
+
+    function renderRecettes(list) {
+      const sousCats = ["Hors-d'oeuvre", "Plats principaux", "Desserts"];
+      return sousCats.map(sc => {
+        const items = list.filter(r => r.sous_categorie === sc && matchesSearch(r)).map(r => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${r.fr}</div>
+                <div class="card-sub">${r.en}</div>
+              </div>
+              <span class="tag">${"★".repeat(r.stars)}</span>
+            </div>
+            ${imgBlock(r.image, r.fr)}
+            <div class="details">
+              <div><strong>Ingrédients :</strong> ${r.ingredients}</div>
+            </div>
+            <div class="footer-meta">
+              <span class="energy">⚡ Énergie : ${r.energy}</span>
+              <span class="price">🪙 Vente : ${r.price}</span>
+            </div>
+          </article>
+        `);
+        return buildSection(`Recettes — ${sc}`, items);
+      }).join("");
+    }
+
+    function renderCrafting(list) {
+      const items = list.filter(matchesSearch).map(cr => `
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">${cr.fr}</div>
+              <div class="card-sub">${cr.en}</div>
+            </div>
+            <span class="tag">${cr.categorie}</span>
+          </div>
+          ${imgBlock(cr.image, cr.fr)}
+          <div class="details">
+            <div><strong>Matériaux :</strong> ${cr.ingredients}</div>
+            <div><strong>Infos :</strong> ${cr.notes}</div>
+          </div>
+        </article>
+      `);
+      return buildSection("Crafting", items);
+    }
+
+    function renderPoissons(list) {
+      const items = list.filter(matchesSearch).map(p => `
+        <article class="card">
+          <div class="card-top">
+            <div>
+              <div class="card-title">${p.fr}</div>
+              <div class="card-sub">${p.type}</div>
+            </div>
+          </div>
+          ${imgBlock(p.image, p.fr)}
+        </article>
+      `);
+      return buildSection("Poissons", items);
+    }
+
+    function renderRecoltes(list) {
+      const cats = [
+        "sous l'eau",
+        "matériaux d'artisanat",
+        "fleurs",
+        "récupération",
+        "ingrédients"
+      ];
+      return cats.map(cat => {
+        const items = list.filter(rec => rec.categorie === cat && matchesSearch(rec)).map(rec => `
+          <article class="card">
+            <div class="card-top">
+              <div>
+                <div class="card-title">${rec.fr}</div>
+                <div class="card-sub">${rec.categorie}</div>
+              </div>
+            </div>
+            ${imgBlock(rec.image, rec.fr)}
+          </article>
+        `);
+        return buildSection(`Récoltes — ${cat}`, items);
+      }).join("");
+    }
+
+    function renderPage() {
+      if (!db) return;
+      const target = document.getElementById("pageContent");
+
+      if (currentPage === "accueil") {
+        target.innerHTML =
+          renderBestioles(db.bestioles) +
+          renderCompagnons(db.compagnons) +
+          renderRecettes(db.recettes) +
+          renderCrafting(db.crafting) +
+          renderPoissons(db.poissons) +
+          renderRecoltes(db.recoltes);
+      } else if (currentPage === "bestioles") {
+        target.innerHTML = renderBestioles(db.bestioles);
+      } else if (currentPage === "compagnons") {
+        target.innerHTML = renderCompagnons(db.compagnons);
+      } else if (currentPage === "recettes") {
+        target.innerHTML = renderRecettes(db.recettes);
+      } else if (currentPage === "crafting") {
+        target.innerHTML = renderCrafting(db.crafting);
+      } else if (currentPage === "poissons") {
+        target.innerHTML = renderPoissons(db.poissons);
+      } else if (currentPage === "recoltes") {
+        target.innerHTML = renderRecoltes(db.recoltes);
+      }
     }
 
     fetch("data.json")
-      .then(res => res.json())
-      .then(json => {
-        guideData = json;
-        renderAll();
+      .then(r => r.json())
+      .then(data => {
+        db = data;
+        renderPage();
       });
 
-    document.querySelectorAll(".filters button").forEach(btn => {
+    document.querySelectorAll(".nav-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+        document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
-        activeCat = btn.dataset.cat;
-        renderAll();
+        currentPage = btn.dataset.page;
+        renderPage();
       });
     });
 
-    document.getElementById("search").addEventListener("input", e => {
-      query = e.target.value;
-      renderAll();
+    document.getElementById("searchInput").addEventListener("input", e => {
+      searchText = e.target.value;
+      renderPage();
     });
   </script>
 </body>

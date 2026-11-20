@@ -1,475 +1,857 @@
 {
-  "compagnons": [
+  "accueil": {
+    "titre": "Disney Dreamlight Valley",
+    "sous_titre": "La Mer des Souvenirs — Guide Pratique",
+    "banner_image": "images/accueil/dlc_mer_des_souvenirs.webp"
+  },
+  "bestioles": [
     {
-      "id": "toucan",
-      "fr": "Toucan",
-      "en": "Toucan",
-      "image": "images/compagnons/toucan.png",
-      "lieu": "Rivages des Naufragés (dans les arbres)",
-      "comportement": "Amical",
-      "debloquer": "Nourrissez-le 1 fois pour en faire votre compagnon",
-      "approche": "Approchez-vous directement",
-      "preferee": "Litchi",
-      "appreciee": "Fruits",
-      "bonus": "Emmenez ce compagnon avec vous pendant que vous cherchez d'autres fleurs !"
-    },
-    {
-      "id": "meringuin",
-      "fr": "Meringuin",
-      "en": "Meringuin",
-      "image": "images/compagnons/meringuin.png",
-      "lieu": "Crique des Bonbons",
-      "comportement": "Joueur",
-      "debloquer": "Nourrissez-le 2 fois pour en faire votre compagnon",
-      "approche": "Poursuivez-le dans une partie de chat !",
-      "preferee": "Cailloux de bonbons",
-      "appreciee": "Poisson",
-      "bonus": "Emmenez ce compagnon avec vous pendant que vous cherchez d'autres fruits et plantes sauvages !"
-    },
-    {
-      "id": "axolotl",
-      "fr": "Axolotl",
-      "en": "Axolotl",
-      "image": "images/compagnons/axolotl.png",
+      "fr": "Axolotl aigue-marine",
+      "en": "Aquamarine Axolotl",
       "lieu": "Royaume des Oubliés (en pêchant)",
       "comportement": "Timide",
-      "debloquer": "Nourrissez-le 3 fois pour en faire votre compagnon",
+      "debloquer": "Nourrissez-le 3 fois pour en faire un compagnon",
       "approche": "Lorsqu'il se cache, arrêtez de bouger et attendez patiemment qu'il sorte.",
       "preferee": "Corail rose",
       "appreciee": "Fruits de mer",
-      "bonus": "Emmenez ce compagnon avec vous pendant que vous pêchez pour trouver plus de poissons !"
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous pêchez pour trouver plus de poissons !",
+      "image": "images/bestioles/Axolotl_aigue-marine.webp"
+    },
+    {
+      "fr": "Axolotl améthyste",
+      "en": "Amethyst Axolotl",
+      "lieu": "Royaume des Oubliés (en pêchant)",
+      "comportement": "Timide",
+      "debloquer": "Nourrissez-le 3 fois pour en faire un compagnon",
+      "approche": "Lorsqu'il se cache, arrêtez de bouger et attendez patiemment qu'il sorte.",
+      "preferee": "Corail rose",
+      "appreciee": "Fruits de mer",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous pêchez pour trouver plus de poissons !",
+      "image": "images/bestioles/Axolotl_améthyste.webp"
+    },
+    {
+      "fr": "Axolotl onyx",
+      "en": "Onyx Axolotl",
+      "lieu": "Royaume des Oubliés (en pêchant)",
+      "comportement": "Timide",
+      "debloquer": "Nourrissez-le 3 fois pour en faire un compagnon",
+      "approche": "Lorsqu'il se cache, arrêtez de bouger et attendez patiemment qu'il sorte.",
+      "preferee": "Corail rose",
+      "appreciee": "Fruits de mer",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous pêchez pour trouver plus de poissons !",
+      "image": "images/bestioles/Axolotl_onyx.webp"
+    },
+    {
+      "fr": "Axolotl quartz rose",
+      "en": "Rose Quartz Axolotl",
+      "lieu": "Royaume des Oubliés (en pêchant)",
+      "comportement": "Timide",
+      "debloquer": "Nourrissez-le 3 fois pour en faire un compagnon",
+      "approche": "Lorsqu'il se cache, arrêtez de bouger et attendez patiemment qu'il sorte.",
+      "preferee": "Corail rose",
+      "appreciee": "Fruits de mer",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous pêchez pour trouver plus de poissons !",
+      "image": "images/bestioles/Axolotl_quartz_rose.webp"
+    },
+    {
+      "fr": "Axolotl tourmaline",
+      "en": "Tourmaline Axolotl",
+      "lieu": "Royaume des Oubliés (en pêchant)",
+      "comportement": "Timide",
+      "debloquer": "Nourrissez-le 3 fois pour en faire un compagnon",
+      "approche": "Lorsqu'il se cache, arrêtez de bouger et attendez patiemment qu'il sorte.",
+      "preferee": "Corail rose",
+      "appreciee": "Fruits de mer",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous pêchez pour trouver plus de poissons !",
+      "image": "images/bestioles/Axolotl_tourmaline.webp"
+    },
+    {
+      "fr": "Meringue à la crème à l'orange",
+      "en": "Orange Cream Meringue",
+      "lieu": "Crique des Bonbons",
+      "comportement": "Joueur",
+      "debloquer": "Nourrissez-le 2 fois pour en faire un compagnon",
+      "approche": "Poursuivez-le dans une partie de chat !",
+      "preferee": "Galets sucrés / Cailloux de bonbons",
+      "appreciee": "Poisson",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous cherchez d'autres fruits et plantes sauvages !",
+      "image": "images/bestioles/Meringue_à_la_crème_à_l'orange.webp"
+    },
+    {
+      "fr": "Meringue à la framboise bleue glacée",
+      "en": "Frosted Blue Raspberry Meringue",
+      "lieu": "Crique des Bonbons",
+      "comportement": "Joueur",
+      "debloquer": "Nourrissez-le 2 fois pour en faire un compagnon",
+      "approche": "Poursuivez-le dans une partie de chat !",
+      "preferee": "Galets sucrés / Cailloux de bonbons",
+      "appreciee": "Poisson",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous cherchez d'autres fruits et plantes sauvages !",
+      "image": "images/bestioles/Meringue_à_la_framboise_bleue_glacée.webp"
+    },
+    {
+      "fr": "Meringue à la réglisse salée",
+      "en": "Salted Licorice Meringue",
+      "lieu": "Crique des Bonbons",
+      "comportement": "Joueur",
+      "debloquer": "Nourrissez-le 2 fois pour en faire un compagnon",
+      "approche": "Poursuivez-le dans une partie de chat !",
+      "preferee": "Galets sucrés / Cailloux de bonbons",
+      "appreciee": "Poisson",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous cherchez d'autres fruits et plantes sauvages !",
+      "image": "images/bestioles/Meringue_à_la_réglisse_salée.webp"
+    },
+    {
+      "fr": "Meringue au soda à la cerise",
+      "en": "Cherry Soda Meringue",
+      "lieu": "Crique des Bonbons",
+      "comportement": "Joueur",
+      "debloquer": "Nourrissez-le 2 fois pour en faire un compagnon",
+      "approche": "Poursuivez-le dans une partie de chat !",
+      "preferee": "Galets sucrés / Cailloux de bonbons",
+      "appreciee": "Poisson",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous cherchez d'autres fruits et plantes sauvages !",
+      "image": "images/bestioles/Meringue_au_soda_à_la_cerise.webp"
+    },
+    {
+      "fr": "Meringue au sorbet à la framboise",
+      "en": "Raspberry Sorbet Meringue",
+      "lieu": "Crique des Bonbons",
+      "comportement": "Joueur",
+      "debloquer": "Nourrissez-le 2 fois pour en faire un compagnon",
+      "approche": "Poursuivez-le dans une partie de chat !",
+      "preferee": "Galets sucrés / Cailloux de bonbons",
+      "appreciee": "Poisson",
+      "bonus": "Bonus de rencontre : emmenez-le pendant que vous cherchez d'autres fruits et plantes sauvages !",
+      "image": "images/bestioles/Meringue_au_sorbet_à_la_framboise.webp"
+    },
+    {
+      "fr": "Toucan de la jungle",
+      "en": "Jungle Toucan",
+      "lieu": "Rivages des Naufragés (dans les arbres)",
+      "comportement": "Amical",
+      "debloquer": "Nourrissez-le 1 fois pour en faire un compagnon",
+      "approche": "Approchez-vous directement",
+      "preferee": "Litchi",
+      "appreciee": "Fruits",
+      "bonus": "Bonus de sortie : emmenez-le pendant que vous cherchez d'autres fleurs !",
+      "image": "images/bestioles/Toucan_de_la_jungle.webp"
+    },
+    {
+      "fr": "Toucan ensoleillé",
+      "en": "Sunny Toucan",
+      "lieu": "Rivages des Naufragés (dans les arbres)",
+      "comportement": "Amical",
+      "debloquer": "Nourrissez-le 1 fois pour en faire un compagnon",
+      "approche": "Approchez-vous directement",
+      "preferee": "Litchi",
+      "appreciee": "Fruits",
+      "bonus": "Bonus de sortie : emmenez-le pendant que vous cherchez d'autres fleurs !",
+      "image": "images/bestioles/Toucan_ensoleillé.webp"
+    },
+    {
+      "fr": "Toucan marin",
+      "en": "Marine Toucan",
+      "lieu": "Rivages des Naufragés (dans les arbres)",
+      "comportement": "Amical",
+      "debloquer": "Nourrissez-le 1 fois pour en faire un compagnon",
+      "approche": "Approchez-vous directement",
+      "preferee": "Litchi",
+      "appreciee": "Fruits",
+      "bonus": "Bonus de sortie : emmenez-le pendant que vous cherchez d'autres fleurs !",
+      "image": "images/bestioles/Toucan_marin.webp"
+    },
+    {
+      "fr": "Toucan nuageux",
+      "en": "Cloudy Toucan",
+      "lieu": "Rivages des Naufragés (dans les arbres)",
+      "comportement": "Amical",
+      "debloquer": "Nourrissez-le 1 fois pour en faire un compagnon",
+      "approche": "Approchez-vous directement",
+      "preferee": "Litchi",
+      "appreciee": "Fruits",
+      "bonus": "Bonus de sortie : emmenez-le pendant que vous cherchez d'autres fleurs !",
+      "image": "images/bestioles/Toucan_nuageux.webp"
+    },
+    {
+      "fr": "Toucan ombrageux",
+      "en": "Shady Toucan",
+      "lieu": "Rivages des Naufragés (dans les arbres)",
+      "comportement": "Amical",
+      "debloquer": "Nourrissez-le 1 fois pour en faire un compagnon",
+      "approche": "Approchez-vous directement",
+      "preferee": "Litchi",
+      "appreciee": "Fruits",
+      "bonus": "Bonus de sortie : emmenez-le pendant que vous cherchez d'autres fleurs !",
+      "image": "images/bestioles/Toucan_ombrageux.webp"
     }
   ],
-  "hors_doeuvre": [
+  "compagnons": [
     {
+      "fr": "Dory",
+      "en": "Dory",
+      "role": "Compagnon d'aventure",
+      "bonus": "Accompagnement & rôles",
+      "notes": "Compagnon d'aventure ajouté dans votre dossier.",
+      "image": "images/compagnons/Dory.webp"
+    },
+    {
+      "fr": "Polochon",
+      "en": "Flounder",
+      "role": "Compagnon d'aventure",
+      "bonus": "Accompagnement & rôles",
+      "notes": "Compagnon d'aventure ajouté dans votre dossier.",
+      "image": "images/compagnons/Polochon.webp"
+    },
+    {
+      "fr": "Sébastien",
+      "en": "Sebastian",
+      "role": "Compagnon d'aventure",
+      "bonus": "Accompagnement & rôles",
+      "notes": "Compagnon d'aventure ajouté dans votre dossier.",
+      "image": "images/compagnons/Sébastien.webp"
+    }
+  ],
+  "recettes": [
+    {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Bagna Cauda",
       "en": "Bagna Cauda",
       "stars": 3,
       "ingredients": "Anchois, Beurre, N'importe quelle épice",
       "energy": "+878",
       "price": "322",
-      "id": "hors_doeuvre_bagna_cauda",
-      "image": "images/recettes/hors_doeuvre_bagna_cauda.png"
+      "image": "images/recettes/Hors-d'oeuvre/Bagna_Càuda.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Huître confite",
       "en": "Candied Oyster",
       "stars": 2,
-      "ingredients": "Huître, Bonbon gélifié (Gummy Bean)",
+      "ingredients": "Huître, Bonbon gélifié",
       "energy": "+568",
       "price": "221",
-      "id": "hors_doeuvre_candied_oyster",
-      "image": "images/recettes/hors_doeuvre_candied_oyster.png"
+      "image": "images/recettes/Hors-d'oeuvre/Candied_Oyster.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Crackers amicaux au poisson",
       "en": "Friendly Fish Crackers",
       "stars": 3,
-      "ingredients": "Labre mano (Mano Wrasse), Blé, N'importe quel légume",
+      "ingredients": "Labre mano, Blé, N'importe quel légume",
       "energy": "+3 181",
       "price": "1 693",
-      "id": "hors_doeuvre_friendly_fish_crackers",
-      "image": "images/recettes/hors_doeuvre_friendly_fish_crackers.png"
+      "image": "images/recettes/Hors-d'oeuvre/Friendly_Fish_Crackers.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Huîtres porte-bonheur à la courge",
       "en": "Gourd Luck Oysters",
       "stars": 2,
-      "ingredients": "Huître, Courge sirène (Mermaid Gourd), Lierre magique (Magical Ivy)",
+      "ingredients": "Huître, Courge de sirène, Lierre magique",
       "energy": "+761",
       "price": "665",
-      "id": "hors_doeuvre_gourd_luck_oysters",
-      "image": "images/recettes/hors_doeuvre_gourd_luck_oysters.png"
+      "image": "images/recettes/Hors-d'oeuvre/Gourd_Luck_Oysters.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Prise du Kraken",
       "en": "Kraken's Catch",
       "stars": 4,
-      "ingredients": "Mini-Kraken, Avocat de rêve (Dreamlight Avocado), N'importe quel produit laitier / huile, N'importe quel fruit",
+      "ingredients": "Mini-Kraken, Avocat de Dreamlight, N'importe quel produit laitier / huile, N'importe quel fruit",
       "energy": "+2 707",
       "price": "1 270",
-      "id": "hors_doeuvre_kraken_s_catch",
-      "image": "images/recettes/hors_doeuvre_kraken_s_catch.png"
+      "image": "images/recettes/Hors-d'oeuvre/Kraken's_Catch.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Thé à l'hibiscus lumineux",
       "en": "Luminous Hibiscus Tea",
       "stars": 1,
-      "ingredients": "Hibiscus lumineux (Luminous Hibiscus)",
+      "ingredients": "Hibiscus lumineux",
       "energy": "+106",
       "price": "120",
-      "id": "hors_doeuvre_luminous_hibiscus_tea",
-      "image": "images/recettes/hors_doeuvre_luminous_hibiscus_tea.png"
+      "image": "images/recettes/Hors-d'oeuvre/Luminous_Hibiscus_Tea.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Biscuit de mer",
       "en": "Sea Biscuit",
       "stars": 3,
-      "ingredients": "Anchois, Riz, Cœur de palmier doux (Sweet Heart of Palm)",
+      "ingredients": "Anchois, Riz, Cœur de palmier sucré",
       "energy": "+481",
       "price": "169",
-      "id": "hors_doeuvre_sea_biscuit",
-      "image": "images/recettes/hors_doeuvre_sea_biscuit.png"
+      "image": "images/recettes/Hors-d'oeuvre/Sea_Biscuit.png"
     },
     {
-      "fr": "Ceviche au cœur de palmier doux",
+      "sous_categorie": "Hors-d'oeuvre",
+      "fr": "Ceviche au cœur de palmier sucré",
       "en": "Sweet Heart Of Palm Ceviche",
       "stars": 3,
-      "ingredients": "Cœur de palmier doux, Tomate, N'importe quelle épice",
+      "ingredients": "Cœur de palmier sucré, Tomate, N'importe quelle épice",
       "energy": "+187",
       "price": "100",
-      "id": "hors_doeuvre_sweet_heart_of_palm_ceviche",
-      "image": "images/recettes/hors_doeuvre_sweet_heart_of_palm_ceviche.png"
+      "image": "images/recettes/Hors-d'oeuvre/Sweet_Heart_of_Palm_Ceviche.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Soupe douce et consistante",
       "en": "Sweet Hearty Soup",
       "stars": 3,
-      "ingredients": "Crabe d'igloo (Igloo Crab), Maïs bonbon (Candy Corn), Tomate",
+      "ingredients": "Crabe igloo, Maïs sucré, Tomate",
       "energy": "+465",
       "price": "289",
-      "id": "hors_doeuvre_sweet_hearty_soup",
-      "image": "images/recettes/hors_doeuvre_sweet_hearty_soup.png"
+      "image": "images/recettes/Hors-d'oeuvre/Sweet_Hearty_Soup.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Salade cœur doux",
       "en": "Sweet Heart Salad",
       "stars": 2,
-      "ingredients": "Avocat de rêve (Dreamlight Avocado), Cœur de palmier doux",
+      "ingredients": "Avocat de Dreamlight, Cœur de palmier sucré",
       "energy": "+202",
       "price": "86",
-      "id": "hors_doeuvre_sweet_heart_salad",
-      "image": "images/recettes/hors_doeuvre_sweet_heart_salad.png"
+      "image": "images/recettes/Hors-d'oeuvre/Sweetheart_Salad.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Beignets de taro",
       "en": "Taro Fritters",
       "stars": 2,
-      "ingredients": "N'importe quelle céréale, Taro crépusculaire (Twilight Taro)",
+      "ingredients": "N'importe quelle céréale, Taro du crépuscule",
       "energy": "+221",
       "price": "207",
-      "id": "hors_doeuvre_taro_fritters",
-      "image": "images/recettes/hors_doeuvre_taro_fritters.png"
+      "image": "images/recettes/Hors-d'oeuvre/Taro_Fritters.png"
     },
     {
+      "sous_categorie": "Hors-d'oeuvre",
       "fr": "Tartare de poisson-licorne",
       "en": "Unicorn Fish Tartare",
       "stars": 1,
-      "ingredients": "Poisson-licorne (Unicorn Fish)",
+      "ingredients": "Poisson-licorne",
       "energy": "+290",
       "price": "72",
-      "id": "hors_doeuvre_unicorn_fish_tartare",
-      "image": "images/recettes/hors_doeuvre_unicorn_fish_tartare.png"
-    }
-  ],
-  "entrees": [
+      "image": "images/recettes/Hors-d'oeuvre/Unicorn_Fish_Tartare.png"
+    },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Salade à la courge",
       "en": "Gourd Time Salad",
       "stars": 4,
-      "ingredients": "Courge sirène, Tomate, N'importe quel légume, Lierre magique",
+      "ingredients": "Courge de sirène, Tomate, N'importe quel légume, Lierre magique",
       "energy": "+403",
       "price": "682",
-      "id": "entrees_gourd_time_salad",
-      "image": "images/recettes/entrees_gourd_time_salad.png"
+      "image": "images/recettes/Plats principaux/Gourd_Time_Salad.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Gratin merveilleux à la courge",
       "en": "Gourd-geous Casserole",
       "stars": 5,
-      "ingredients": "Poisson-licorne, Courge sirène, N'importe quel légume, Fromage, N'importe quelle épice",
+      "ingredients": "Poisson-licorne, Courge de sirène, N'importe quel légume, Fromage, N'importe quelle épice",
       "energy": "+1 122",
       "price": "876",
-      "id": "entrees_gourd_geous_casserole",
-      "image": "images/recettes/entrees_gourd_geous_casserole.png"
+      "image": "images/recettes/Plats principaux/Gourd-geous_Casserole.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Pâtes à l'encre",
       "en": "Inky Pasta",
       "stars": 2,
       "ingredients": "Mini-Kraken, Blé",
       "energy": "+2 292",
       "price": "1 042",
-      "id": "entrees_inky_pasta",
-      "image": "images/recettes/entrees_inky_pasta.png"
+      "image": "images/recettes/Plats principaux/Inky_Pasta.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Salade de méduse",
       "en": "Jellyfish Salad",
       "stars": 4,
-      "ingredients": "Méduse (Jelly Fish), Tomate, N'importe quel légume, Soja",
+      "ingredients": "Méduse, Tomate, N'importe quel légume, Soja",
       "energy": "+3 088",
       "price": "1 648",
-      "id": "entrees_jellyfish_salad",
-      "image": "images/recettes/entrees_jellyfish_salad.png"
+      "image": "images/recettes/Plats principaux/Jellyfish_Salad.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Tarte au Kraken",
       "en": "Kraken Tart",
       "stars": 3,
       "ingredients": "Mini-Kraken, Blé, Litchi",
       "energy": "+3 054",
       "price": "1 168",
-      "id": "entrees_kraken_tart",
-      "image": "images/recettes/entrees_kraken_tart.png"
+      "image": "images/recettes/Plats principaux/Kraken_Tart.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Riz au curry et labre mangue",
       "en": "Mango Wrasse Curry Rice",
       "stars": 3,
-      "ingredients": "Labre mangue (Mango Wrasse), Riz, N'importe quelle épice",
+      "ingredients": "Labre mangue, Riz, N'importe quelle épice",
       "energy": "+3 261",
       "price": "1 786",
-      "id": "entrees_mango_wrasse_curry_rice",
-      "image": "images/recettes/entrees_mango_wrasse_curry_rice.png"
+      "image": "images/recettes/Plats principaux/Mango_Wrasse_Curry_Rice.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Hot-dog bateau pirate",
       "en": "Pirate Ship Hot Dog",
       "stars": 4,
-      "ingredients": "Avocat de rêve, N'importe quel légume, Soja, Blé",
+      "ingredients": "Avocat de Dreamlight, N'importe quel légume, Soja, Blé",
       "energy": "+374",
       "price": "166",
-      "id": "entrees_pirate_ship_hot_dog",
-      "image": "images/recettes/entrees_pirate_ship_hot_dog.png"
+      "image": "images/recettes/Plats principaux/Pirate_Ship_Hot_Dog.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Assortiment bateau de sushis",
       "en": "Sushi Ship Platter",
       "stars": 5,
       "ingredients": "Anchois, N'importe quel poisson, Riz, Varech d'anguille électrique, Hibiscus lumineux",
       "energy": "+888",
       "price": "377",
-      "id": "entrees_sushi_ship_platter",
-      "image": "images/recettes/entrees_sushi_ship_platter.png"
+      "image": "images/recettes/Plats principaux/Sushi_Ship_Platter.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Crabe glacé sucré",
       "en": "Sweet Frozen Crab",
       "stars": 4,
-      "ingredients": "Crabe d'igloo, Méduse, 2x N'importe quel fruit",
+      "ingredients": "Crabe igloo, Méduse, 2x N'importe quel fruit",
       "energy": "+3 263",
       "price": "1 586",
-      "id": "entrees_sweet_frozen_crab",
-      "image": "images/recettes/entrees_sweet_frozen_crab.png"
+      "image": "images/recettes/Plats principaux/Sweet_Frozen_Crab.png"
     },
     {
+      "sous_categorie": "Plats principaux",
       "fr": "Pizza carte au trésor",
       "en": "Treasure Map Pizza",
       "stars": 4,
-      "ingredients": "Avocat de rêve, Blé, Anchois, Tomate",
+      "ingredients": "Avocat de Dreamlight, Blé, Anchois, Tomate",
       "energy": "+522",
       "price": "121",
-      "id": "entrees_treasure_map_pizza",
-      "image": "images/recettes/entrees_treasure_map_pizza.png"
-    }
-  ],
-  "desserts": [
-    {
-      "fr": "Tarte au maïs bonbon",
-      "en": "Candy Corn Tart",
-      "stars": 1,
-      "ingredients": "Maïs bonbon (Candy Corn)",
-      "energy": "+146",
-      "price": "174",
-      "id": "desserts_candy_corn_tart",
-      "image": "images/recettes/desserts_candy_corn_tart.png"
+      "image": "images/recettes/Plats principaux/Treasure_Map_Pizza.png"
     },
     {
+      "sous_categorie": "Desserts",
+      "fr": "Tarte au maïs sucré",
+      "en": "Candy Corn Tart",
+      "stars": 1,
+      "ingredients": "Maïs sucré",
+      "energy": "+146",
+      "price": "174",
+      "image": "images/recettes/Desserts/Candy_Corn_Tart.png"
+    },
+    {
+      "sous_categorie": "Desserts",
       "fr": "Baies d'érable enrobées de chocolat",
       "en": "Chocolate Covered Mapleberries",
       "stars": 2,
-      "ingredients": "Baie d'érable (Mapleberry), Fève de cacao",
+      "ingredients": "Baie d'érable, Fève de cacao",
       "energy": "+1 495",
       "price": "98",
-      "id": "desserts_chocolate_covered_mapleberries",
-      "image": "images/recettes/desserts_chocolate_covered_mapleberries.png"
+      "image": "images/recettes/Desserts/Chocolate-Covered_Mapleberries.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Churros au sirop sucré",
       "en": "Churros With Sweet Syrup",
       "stars": 3,
       "ingredients": "Bonbon gélifié, Blé, Beurre",
       "energy": "+696",
       "price": "436",
-      "id": "desserts_churros_with_sweet_syrup",
-      "image": "images/recettes/desserts_churros_with_sweet_syrup.png"
+      "image": "images/recettes/Desserts/Churros_with_Sweet_Syrup.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Cornet de crêpe",
       "en": "Crepe Cone",
       "stars": 3,
-      "ingredients": "Paille canne sorbet (Sherbet Cane Straw), N'importe quelle céréale, Œuf, Baie d'érable, N'importe quel fruit",
+      "ingredients": "Paille canne sorbet, N'importe quelle céréale, Œuf, Baie d'érable, N'importe quel fruit",
       "energy": "+1 680",
       "price": "593",
-      "id": "desserts_crepe_cone",
-      "image": "images/recettes/desserts_crepe_cone.png"
+      "image": "images/recettes/Desserts/Crepe_Cone.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Cake pops mignons",
       "en": "Cute Cake Pops",
       "stars": 4,
       "ingredients": "Paille canne sorbet, N'importe quelle céréale, Beurre, Lait",
       "energy": "+1 367",
       "price": "787",
-      "id": "desserts_cute_cake_pops",
-      "image": "images/recettes/desserts_cute_cake_pops.png"
+      "image": "images/recettes/Desserts/Cute_Cake_Pops.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Sablés mignons",
       "en": "Cute Sugar Cookies",
       "stars": 2,
       "ingredients": "Paille canne sorbet, Beurre",
       "energy": "+610",
       "price": "380",
-      "id": "desserts_cute_sugar_cookies",
-      "image": "images/recettes/desserts_cute_sugar_cookies.png"
+      "image": "images/recettes/Desserts/Cute_Sugar_Cookies.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Pudding au glaçage",
       "en": "Frosting Pudding",
       "stars": 2,
-      "ingredients": "2x Bonbon gélifié (Gummy Bean)",
+      "ingredients": "2x Bonbon gélifié",
       "energy": "+236",
       "price": "312",
-      "id": "desserts_frosting_pudding",
-      "image": "images/recettes/desserts_frosting_pudding.png"
+      "image": "images/recettes/Desserts/Frosting_Pudding.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Sandwich glacé",
       "en": "Ice Cream Sandwich",
       "stars": 3,
       "ingredients": "Paille canne sorbet, Blé, Fève de cacao",
       "energy": "+975",
       "price": "199",
-      "id": "desserts_ice_cream_sandwich",
-      "image": "images/recettes/desserts_ice_cream_sandwich.png"
+      "image": "images/recettes/Desserts/Ice_Cream_Sandwich.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Mochi aux baies d'érable",
       "en": "Mapleberry Mochi",
       "stars": 3,
       "ingredients": "Baie d'érable, Riz, Bonbon gélifié",
       "energy": "+975",
       "price": "306",
-      "id": "desserts_mapleberry_mochi",
-      "image": "images/recettes/desserts_mapleberry_mochi.png"
+      "image": "images/recettes/Desserts/Mapleberry_Mochi.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Milkshake sirène",
       "en": "Mermaid Milkshake",
       "stars": 4,
-      "ingredients": "Lait, Grenade (Pomegranate), N'importe quel fruit, N'importe quel ingrédient sucré",
+      "ingredients": "Lait, Grenade, N'importe quel fruit, N'importe quel ingrédient sucré",
       "energy": "+1 686",
       "price": "446",
-      "id": "desserts_mermaid_milkshake",
-      "image": "images/recettes/desserts_mermaid_milkshake.png"
+      "image": "images/recettes/Desserts/Mermaid_Milkshake.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Bouchées à la grenade",
       "en": "Pomegranate Dumplings",
       "stars": 2,
-      "ingredients": "Grenade (Pomegranate), Riz",
+      "ingredients": "Grenade, Riz",
       "energy": "+915",
       "price": "131",
-      "id": "desserts_pomegranate_dumplings",
-      "image": "images/recettes/desserts_pomegranate_dumplings.png"
+      "image": "images/recettes/Desserts/Pomegranate_Dumplings.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Pâtisserie violette",
       "en": "Purple Pastry",
       "stars": 4,
-      "ingredients": "N'importe quelle céréale, Taro crépusculaire, Grenade, N'importe quel ingrédient sucré",
+      "ingredients": "N'importe quelle céréale, Taro du crépuscule, Grenade, N'importe quel ingrédient sucré",
       "energy": "+1 183",
       "price": "328",
-      "id": "desserts_purple_pastry",
-      "image": "images/recettes/desserts_purple_pastry.png"
+      "image": "images/recettes/Desserts/Purple_Pastry.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Madeleines coquillage",
       "en": "Seashell Madeleines",
       "stars": 3,
       "ingredients": "Blé, N'importe quel ingrédient sucré, Grenade",
       "energy": "+976",
       "price": "84",
-      "id": "desserts_seashell_madeleines",
-      "image": "images/recettes/desserts_seashell_madeleines.png"
+      "image": "images/recettes/Desserts/Seashell_Madeleines.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Litchis farcis",
       "en": "Stuffed Lychees",
       "stars": 2,
       "ingredients": "Litchi, Hibiscus lumineux",
       "energy": "+704",
       "price": "172",
-      "id": "desserts_stuffed_lychees",
-      "image": "images/recettes/desserts_stuffed_lychees.png"
+      "image": "images/recettes/Desserts/Stuffed_Lychees.png"
     },
     {
+      "sous_categorie": "Desserts",
       "fr": "Pain tortue au taro",
       "en": "Taro Turtle Bread",
       "stars": 2,
-      "ingredients": "Blé, Taro crépusculaire (Twilight Taro)",
+      "ingredients": "Blé, Taro du crépuscule",
       "energy": "+221",
       "price": "207",
-      "id": "desserts_taro_turtle_bread",
-      "image": "images/recettes/desserts_taro_turtle_bread.png"
+      "image": "images/recettes/Desserts/Taro_Turtle_Bread.png"
     }
   ],
-  "craft": [
+  "crafting": [
     {
-      "id": "craft_cape_fantome_dechirée",
       "fr": "Cape fantôme déchirée",
       "en": "Tattered Phantom Cloak",
       "categorie": "Quête / Fabrication",
-      "ingredients": "Teinture crâne flottant d'Ursula (1), Varech d'anguille électrique (3), Filet déchiré (3), Muflier crâne jaune (2)",
-      "image": "images/craft/craft_cape_fantome_dechiree.png",
-      "notes": "Fabriquée lors de la quête « Capitaine des Morts » (Captain of the Dead)."
+      "ingredients": "Varech d'anguille électrique (3), Filet déchiré (3), Gueule-de-loup crâne jaune (2) + teinture de quête",
+      "notes": "À intégrer dans votre dossier crafting.",
+      "image": "images/crafting/Cape_fantome_dechiree.webp"
     },
     {
-      "id": "craft_arche_bateau_pirate",
-      "fr": "Arche bateau pirate (réparation)",
+      "fr": "Arche bateau pirate",
       "en": "Pirate Ship Archway",
       "categorie": "Structure / Quête",
-      "ingredients": "Pierre ponce (10), Muflier crâne bleu (4), Muflier crâne jaune (4), Bernacle cristalline (2)",
-      "image": "images/craft/craft_arche_bateau_pirate.png",
-      "notes": "Réparation dans le Poste du Colporteur (Peddler's Post)."
+      "ingredients": "Pierre ponce (10), Gueule-de-loup crâne bleue (4), Gueule-de-loup crâne jaune (4)",
+      "notes": "À intégrer dans votre dossier crafting.",
+      "image": "images/crafting/Arche_bateau_pirate.webp"
     },
     {
-      "id": "craft_lunettes_enchantees",
-      "fr": "Lunettes enchantées (réparation)",
+      "fr": "Lunettes enchantées",
       "en": "Enchanted Sunglasses",
       "categorie": "Quête / Objet",
-      "ingredients": "Jus de baie gélifiée (2), Baie d'érable (5), Pierre ponce (4)",
-      "image": "images/craft/craft_lunettes_enchantees.png",
-      "notes": "Permet de faire apparaître un tourbillon caché près du port."
+      "ingredients": "Jus de baies gélifiées (2), Baie d'érable (5), Pierre ponce (4)",
+      "notes": "À intégrer dans votre dossier crafting.",
+      "image": "images/crafting/Lunettes_enchantees.webp"
+    }
+  ],
+  "poissons": [
+    {
+      "fr": "Anchois",
+      "type": "Poisson / Eau",
+      "image": "images/poissons/Anchois.webp"
     },
     {
-      "id": "craft_lin_varech_electrique",
-      "fr": "Lin de varech électrique",
-      "en": "Electric Kelp Linen",
-      "categorie": "Matériau raffiné",
-      "ingredients": "Varech d'anguille électrique (à raffiner à l'établi)",
-      "image": "images/craft/craft_lin_varech_electrique.png",
-      "notes": "Matériau raffiné de la collection La Mer des Souvenirs."
+      "fr": "Corail rose",
+      "type": "Fruit de mer / Pêche (nourriture préférée Axolotl)",
+      "image": "images/poissons/Corail_rose.webp"
     },
     {
-      "id": "craft_doublons_restaures",
-      "fr": "Doublons restaurés",
-      "en": "Restored Doubloons",
-      "categorie": "Matériau raffiné",
-      "ingredients": "Doublons ternis / à raffiner à l'établi",
-      "image": "images/craft/craft_doublons_restaures.png",
-      "notes": "Matériau raffiné obtenu à partir des trouvailles de la grue du navire."
+      "fr": "Crabe igloo",
+      "type": "Fruit de mer / Pêche",
+      "image": "images/poissons/Crabe_igloo.webp"
     },
     {
-      "id": "craft_materiaux_a_conserver",
-      "fr": "Ressources clés à conserver (Craft & Plans)",
-      "en": "Keepsake Sea Crafting Materials",
-      "categorie": "Ressources / Récolte",
-      "ingredients": "Îles : Pièces d'épave, Sable doré, Pierre ponce, Cailloux de bonbons, Pépite de nougat, Coquillages irisés | Plongée : Perle sombre, Varech d'anguille électrique, Bourse de sirène | Pêche : Nacre, Dollars des sables, Filet déchiré | Grue : Artefact ancien, Doublons ternis, Carte au trésor | Gemmes : Bernacle cristalline, Géode, Sucre candi",
-      "image": "images/craft/craft_materiaux_a_conserver.png",
-      "notes": "À garder en stock pour les plans de décoration, l'établi du navire et les quêtes."
+      "fr": "Dollars des sables",
+      "type": "Fruit de mer / Pêche",
+      "image": "images/poissons/Dollars_des_sables.webp"
+    },
+    {
+      "fr": "Filet déchiré",
+      "type": "Pêche / Craft",
+      "image": "images/poissons/Filet_déchiré.webp"
+    },
+    {
+      "fr": "Jus de baies gélifiées",
+      "type": "Pêche / Craft",
+      "image": "images/poissons/Jus_de_baies_gélifiées.webp"
+    },
+    {
+      "fr": "Labre mangue",
+      "type": "Poisson / Eau",
+      "image": "images/poissons/Labre_mangue.webp"
+    },
+    {
+      "fr": "Méduse",
+      "type": "Fruit de mer / Eau",
+      "image": "images/poissons/Méduse.webp"
+    },
+    {
+      "fr": "Mini-Kraken",
+      "type": "Poisson / Eau",
+      "image": "images/poissons/Mini-Kraken.webp"
+    },
+    {
+      "fr": "Nacre",
+      "type": "Fruit de mer / Pêche",
+      "image": "images/poissons/Nacre.webp"
+    },
+    {
+      "fr": "Poisson-licorne",
+      "type": "Poisson / Eau",
+      "image": "images/poissons/Poisson-licorne.webp"
+    },
+    {
+      "fr": "Seau de sucreries",
+      "type": "Pêche / Événement",
+      "image": "images/poissons/Seau_de_sucreries.webp"
+    }
+  ],
+  "recoltes": [
+    {
+      "fr": "Perle noire",
+      "categorie": "sous l'eau",
+      "image": "images/recoltes/sous l'eau/Perle_noire.webp"
+    },
+    {
+      "fr": "Sac de sirène",
+      "categorie": "sous l'eau",
+      "image": "images/recoltes/sous l'eau/Sac_de_sirène.webp"
+    },
+    {
+      "fr": "Varech d'anguille électrique",
+      "categorie": "sous l'eau",
+      "image": "images/recoltes/sous l'eau/Varech_d'anguille_électrique.webp"
+    },
+    {
+      "fr": "Coquillages irisés",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Coquillages_irisés.webp"
+    },
+    {
+      "fr": "Galets sucrés",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Galets_sucrés.webp"
+    },
+    {
+      "fr": "Morceau de nougat",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Morceau_de_nougat.webp"
+    },
+    {
+      "fr": "Pièces d'épave",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Pièces_d'épave.webp"
+    },
+    {
+      "fr": "Pierre ponce",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Pierre_ponce.webp"
+    },
+    {
+      "fr": "Sable d'or",
+      "categorie": "matériaux d'artisanat",
+      "image": "images/recoltes/matériaux d'artisanat/Sable_d'or.webp"
+    },
+    {
+      "fr": "Fleurs-bulles bleues",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Fleurs-bulles_bleues.webp"
+    },
+    {
+      "fr": "Fleurs-bulles jaunes",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Fleurs-bulles_jaunes.webp"
+    },
+    {
+      "fr": "Fleurs-bulles rouges",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Fleurs-bulles_rouges.webp"
+    },
+    {
+      "fr": "Fleurs-bulles vertes",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Fleurs-bulles_vertes.webp"
+    },
+    {
+      "fr": "Gueule-de-loup crâne bleue",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Gueule-de-loup_crâne_bleue.webp"
+    },
+    {
+      "fr": "Gueule-de-loup crâne jaune",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Gueule-de-loup_crâne_jaune.webp"
+    },
+    {
+      "fr": "Gueule-de-loup crâne rouge",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Gueule-de-loup_crâne_rouge.webp"
+    },
+    {
+      "fr": "Gueule-de-loup crâne verte",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Gueule-de-loup_crâne_verte.webp"
+    },
+    {
+      "fr": "Oxalis napolitaine à la fraise",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Oxalis_napolitaine_à_la_fraise.webp"
+    },
+    {
+      "fr": "Oxalis napolitaine à la menthe",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Oxalis_napolitaine_à_la_menthe.webp"
+    },
+    {
+      "fr": "Oxalis napolitaine à la vanille",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Oxalis_napolitaine_à_la_vanille.webp"
+    },
+    {
+      "fr": "Oxalis napolitaine au chocolat",
+      "categorie": "fleurs",
+      "image": "images/recoltes/fleurs/Oxalis_napolitaine_au_chocolat.webp"
+    },
+    {
+      "fr": "Artefact antique",
+      "categorie": "récupération",
+      "image": "images/recoltes/récupération/Artefact_antique.webp"
+    },
+    {
+      "fr": "Carte au trésor",
+      "categorie": "récupération",
+      "image": "images/recoltes/récupération/Carte_au_trésor.webp"
+    },
+    {
+      "fr": "Doublons ternis",
+      "categorie": "récupération",
+      "image": "images/recoltes/récupération/Doublons_ternis.webp"
+    },
+    {
+      "fr": "Avocat de Dreamlight",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/Avocat_de_Dreamlight.png"
+    },
+    {
+      "fr": "Baie d'érable",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/baie_d_érable.png"
+    },
+    {
+      "fr": "Bonbon gélifié",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/bonbon_gélifié.png"
+    },
+    {
+      "fr": "Cœur de palmier sucré",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/coeur_de_palmier_sucré.png"
+    },
+    {
+      "fr": "Courge de sirène",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/courge_de_sirène.png"
+    },
+    {
+      "fr": "Grenade",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/grenade.png"
+    },
+    {
+      "fr": "Hibiscus lumineux",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/hibiscus_lumineux.png"
+    },
+    {
+      "fr": "Lierre magique",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/lierre_magique.png"
+    },
+    {
+      "fr": "Litchi",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/Litchi.webp"
+    },
+    {
+      "fr": "Maïs sucré",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/Maïs_sucré.png"
+    },
+    {
+      "fr": "Paille poudre acidulée",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/Paille_poudre_acidulée.png"
+    },
+    {
+      "fr": "Taro du crépuscule",
+      "categorie": "ingrédients",
+      "image": "images/recoltes/ingrédients/taro_du_crépuscule.png"
     }
   ]
 }
