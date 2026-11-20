@@ -193,7 +193,7 @@
       "role": "Compagnon d'aventure",
       "bonus": "Accompagnement & rôles",
       "notes": "Compagnon d'aventure ajouté dans votre dossier.",
-      "image": "images/compagnons/Dory.webp"
+      "image": "images/compagnons/Dory.png"
     },
     {
       "fr": "Polochon",
@@ -201,7 +201,7 @@
       "role": "Compagnon d'aventure",
       "bonus": "Accompagnement & rôles",
       "notes": "Compagnon d'aventure ajouté dans votre dossier.",
-      "image": "images/compagnons/Polochon.webp"
+      "image": "images/compagnons/Polochon.png"
     },
     {
       "fr": "Sébastien",
@@ -209,7 +209,7 @@
       "role": "Compagnon d'aventure",
       "bonus": "Accompagnement & rôles",
       "notes": "Compagnon d'aventure ajouté dans votre dossier.",
-      "image": "images/compagnons/Sébastien.webp"
+      "image": "images/compagnons/Sébastien.png"
     }
   ],
   "recettes": [
