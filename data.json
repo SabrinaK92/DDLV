@@ -2,7 +2,7 @@
   "accueil": {
     "titre": "Disney Dreamlight Valley",
     "sous_titre": "La Mer des Souvenirs — Guide Pratique",
-    "banner_image": "dlc_mer_des_souvenirs.jpg"
+    "banner_image": "keep_sake_sea.webp"
   },
   "bestioles": [
     {
@@ -666,12 +666,12 @@
     {
       "fr": "Coquillages irisés",
       "categorie": "matériaux d'artisanat",
-      "image": "images/recoltes/matériaux d'artisanat/Coquillages_irisés.webp"
+      "image": "images/recoltes/matériaux d'artisanat/Coquillages_irises.webp"
     },
     {
       "fr": "Galets sucrés",
       "categorie": "matériaux d'artisanat",
-      "image": "images/recoltes/matériaux d'artisanat/Galets_sucrés.webp"
+      "image": "images/recoltes/matériaux d'artisanat/Galets_sucres.webp"
     },
     {
       "fr": "Morceau de nougat",
@@ -681,7 +681,7 @@
     {
       "fr": "Pièces d'épave",
       "categorie": "matériaux d'artisanat",
-      "image": "images/recoltes/matériaux d'artisanat/Pièces_d'épave.webp"
+      "image": "images/recoltes/matériaux d'artisanat/Pieces_d'epave.webp"
     },
     {
       "fr": "Pierre ponce",
@@ -761,7 +761,7 @@
     {
       "fr": "Carte au trésor",
       "categorie": "récupération",
-      "image": "images/recoltes/récupération/Carte_au_trésor.webp"
+      "image": "images/recoltes/récupération/Carte_au_tresor.webp"
     },
     {
       "fr": "Doublons ternis",
@@ -776,22 +776,22 @@
     {
       "fr": "Baie d'érable",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/baie_d_érable.png"
+      "image": "images/recoltes/ingrédients/baie_d_erable.png"
     },
     {
       "fr": "Bonbon gélifié",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/bonbon_gélifié.png"
+      "image": "images/recoltes/ingrédients/bonbon_gélifie.png"
     },
     {
       "fr": "Cœur de palmier sucré",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/coeur_de_palmier_sucré.png"
+      "image": "images/recoltes/ingrédients/coeur_de_palmier_sucre.png"
     },
     {
       "fr": "Courge de sirène",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/courge_de_sirène.png"
+      "image": "images/recoltes/ingrédients/courge_de_sirene.png"
     },
     {
       "fr": "Grenade",
@@ -816,17 +816,17 @@
     {
       "fr": "Maïs sucré",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/Maïs_sucré.png"
+      "image": "images/recoltes/ingrédients/Mais_sucre.png"
     },
     {
       "fr": "Paille poudre acidulée",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/Paille_poudre_acidulée.png"
+      "image": "images/recoltes/ingrédients/Paille_poudre_acidulee.png"
     },
     {
       "fr": "Taro du crépuscule",
       "categorie": "ingrédients",
-      "image": "images/recoltes/ingrédients/taro_du_crépuscule.png"
+      "image": "images/recoltes/ingrédients/taro_du_crepuscule.png"
     }
   ]
 }
