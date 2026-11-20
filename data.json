@@ -2,7 +2,7 @@
   "accueil": {
     "titre": "Disney Dreamlight Valley",
     "sous_titre": "La Mer des Souvenirs — Guide Pratique",
-    "banner_image": "images/accueil/dlc_mer_des_souvenirs.webp"
+    "banner_image": "dlc_mer_des_souvenirs.jpg"
   },
   "bestioles": [
     {
@@ -584,32 +584,7 @@
       "image": "images/recettes/Desserts/Taro_Turtle_Bread.png"
     }
   ],
-  "crafting": [
-    {
-      "fr": "Cape fantôme déchirée",
-      "en": "Tattered Phantom Cloak",
-      "categorie": "Quête / Fabrication",
-      "ingredients": "Varech d'anguille électrique (3), Filet déchiré (3), Gueule-de-loup crâne jaune (2) + teinture de quête",
-      "notes": "À intégrer dans votre dossier crafting.",
-      "image": "images/crafting/Cape_fantome_dechiree.webp"
-    },
-    {
-      "fr": "Arche bateau pirate",
-      "en": "Pirate Ship Archway",
-      "categorie": "Structure / Quête",
-      "ingredients": "Pierre ponce (10), Gueule-de-loup crâne bleue (4), Gueule-de-loup crâne jaune (4)",
-      "notes": "À intégrer dans votre dossier crafting.",
-      "image": "images/crafting/Arche_bateau_pirate.webp"
-    },
-    {
-      "fr": "Lunettes enchantées",
-      "en": "Enchanted Sunglasses",
-      "categorie": "Quête / Objet",
-      "ingredients": "Jus de baies gélifiées (2), Baie d'érable (5), Pierre ponce (4)",
-      "notes": "À intégrer dans votre dossier crafting.",
-      "image": "images/crafting/Lunettes_enchantees.webp"
-    }
-  ],
+  "crafting": [],
   "poissons": [
     {
       "fr": "Anchois",

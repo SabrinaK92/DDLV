@@ -6,24 +6,24 @@
   <title>Disney Dreamlight Valley — La Mer des Souvenirs</title>
   <style>
     :root {
-      --ddlv-navy: #142146;
-      --ddlv-blue: #1e3a8a;
-      --ddlv-gold: #d97706;
-      --ddlv-gold-light: #fef3c7;
-      --ddlv-bg: #f4f7fb;
-      --card-bg: #ffffff;
-      --text: #0f172a;
-      --muted: #475569;
-      --border: #cbd5e1;
-      --energy: #0284c7;
+      --ddlv-sky: #2d5fa8;
+      --ddlv-royal: #3b76c9;
+      --ddlv-champagne: #d4af37;
+      --ddlv-champagne-soft: #f5e6b3;
+      --ddlv-ivory: #faf8f2;
+      --ddlv-surface: #ffffff;
+      --ddlv-ink: #1b2845;
+      --ddlv-muted: #52607a;
+      --ddlv-border: #d8dee9;
+      --ddlv-energy: #1d70b8;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--ddlv-bg);
-      color: var(--text);
+      background: var(--ddlv-ivory);
+      color: var(--ddlv-ink);
       line-height: 1.45;
       padding: 16px;
     }
@@ -31,64 +31,123 @@
     .container { max-width: 1180px; margin: 0 auto; }
 
     .home-hero {
-      background: linear-gradient(135deg, var(--ddlv-navy) 0%, var(--ddlv-blue) 100%);
-      color: #ffffff;
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 20px;
-      border: 2px solid #f59e0b;
-      text-align: center;
-    }
-
-    .home-banner-box {
-      max-width: 560px;
-      height: 150px;
-      margin: 0 auto 16px;
-      border-radius: 12px;
-      border: 2px dashed rgba(255,255,255,0.45);
-      background: rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: relative;
+      border-radius: 18px;
+      padding: 28px 22px;
+      margin-bottom: 18px;
+      border: 2px solid var(--ddlv-champagne);
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(45, 95, 168, 0.78), rgba(59, 118, 201, 0.72));
+      color: #ffffff;
+      text-align: center;
+      box-shadow: 0 6px 20px rgba(27, 40, 69, 0.08);
     }
 
-    .home-banner-box img { width: 100%; height: 100%; object-fit: cover; }
-    .home-banner-fallback { display: none; flex-direction: column; gap: 4px; font-size: 0.82rem; color: #e2e8f0; padding: 10px; }
-    .home-banner-box.missing .home-banner-fallback { display: flex; }
+    .home-bg-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-    .home-hero h1 { font-size: 1.7rem; }
-    .home-hero p { color: #dbeafe; margin-top: 4px; font-size: 0.95rem; }
+    .home-bg-layer img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.34;
+    }
+
+    .home-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .home-hero h1 {
+      font-size: 1.75rem;
+      text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+    }
+
+    .home-hero p {
+      color: #f8fafc;
+      margin-top: 4px;
+      font-size: 0.96rem;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    .dlc-status-note {
+      display: none;
+      margin: 10px auto 0;
+      max-width: 520px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 0.78rem;
+      color: #fef9e7;
+    }
+
+    .dlc-status-note.visible { display: block; }
 
     .main-nav {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 10px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .nav-btn {
-      background: #ffffff;
-      color: var(--ddlv-navy);
-      border: 2px solid transparent;
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--ddlv-ink);
+      border: 2px solid rgba(212, 175, 55, 0.65);
       border-radius: 12px;
-      padding: 12px 10px;
+      padding: 10px 8px;
       font-weight: 700;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.15s ease;
     }
 
-    .nav-btn:hover { border-color: #f59e0b; }
-    .nav-btn.active { background: var(--ddlv-gold); color: #ffffff; border-color: #ffffff; }
-    .nav-btn.home-btn { background: rgba(255,255,255,0.14); color: #ffffff; border-color: rgba(255,255,255,0.35); }
-    .nav-btn.home-btn.active { background: #ffffff; color: var(--ddlv-navy); }
+    .nav-btn:hover {
+      border-color: var(--ddlv-champagne);
+      background: #ffffff;
+    }
+
+    .nav-btn.active {
+      background: var(--ddlv-champagne-soft);
+      color: var(--ddlv-ink);
+      border-color: var(--ddlv-champagne);
+      box-shadow: inset 0 0 0 1px var(--ddlv-champagne);
+    }
+
+    .nav-icon-wrap {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-icon-wrap img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .nav-emoji {
+      font-size: 1.25rem;
+      line-height: 1;
+    }
 
     .toolbar {
-      background: #ffffff;
-      border: 1px solid var(--border);
+      background: var(--ddlv-surface);
+      border: 1px solid var(--ddlv-border);
       border-radius: 12px;
-      padding: 14px;
-      margin-bottom: 20px;
+      padding: 12px 14px;
+      margin-bottom: 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
@@ -101,35 +160,49 @@
     input[type="text"] {
       flex: 1 1 240px;
       padding: 9px 12px;
-      border: 1px solid var(--border);
+      border: 1px solid var(--ddlv-border);
       border-radius: 8px;
       font-size: 0.92rem;
+      color: var(--ddlv-ink);
+      background: #ffffff;
     }
 
     .print-btn {
-      background: var(--ddlv-navy);
+      background: var(--ddlv-royal);
       color: #ffffff;
-      border: none;
+      border: 1px solid var(--ddlv-champagne);
       border-radius: 8px;
       padding: 9px 14px;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       cursor: pointer;
     }
 
+    .welcome-panel {
+      background: var(--ddlv-surface);
+      border: 1px solid var(--ddlv-border);
+      border-left: 4px solid var(--ddlv-champagne);
+      border-radius: 12px;
+      padding: 18px;
+      color: var(--ddlv-muted);
+      font-size: 0.94rem;
+    }
+
+    .welcome-panel strong { color: var(--ddlv-ink); }
+
     .section-title {
-      font-size: 1.25rem;
-      color: var(--ddlv-navy);
-      margin: 22px 0 12px;
+      font-size: 1.22rem;
+      color: var(--ddlv-ink);
+      margin: 20px 0 12px;
       padding-bottom: 6px;
-      border-bottom: 2px solid var(--ddlv-gold);
+      border-bottom: 2px solid var(--ddlv-champagne);
     }
 
     .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(265px, 1fr)); gap: 14px; }
 
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: var(--ddlv-surface);
+      border: 1px solid var(--ddlv-border);
       border-radius: 10px;
       padding: 14px;
       display: flex;
@@ -140,12 +213,14 @@
     }
 
     .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-    .card-title { font-weight: 700; font-size: 1rem; color: var(--ddlv-navy); }
-    .card-sub { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+    .card-title { font-weight: 700; font-size: 1rem; color: var(--ddlv-ink); }
+    .card-sub { font-size: 0.78rem; color: var(--ddlv-muted); font-style: italic; }
+
     .tag {
-      background: var(--ddlv-gold-light);
-      color: #92400e;
-      font-size: 0.75rem;
+      background: var(--ddlv-champagne-soft);
+      color: #6b5310;
+      border: 1px solid var(--ddlv-champagne);
+      font-size: 0.74rem;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 999px;
@@ -155,7 +230,7 @@
     .img-wrap {
       width: 100%;
       height: 98px;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e5e7eb;
       border-radius: 8px;
       background: #ffffff;
       display: flex;
@@ -165,7 +240,7 @@
     }
 
     .img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-    .img-fallback { display: none; flex-direction: column; align-items: center; text-align: center; font-size: 0.72rem; color: var(--muted); padding: 6px; gap: 2px; }
+    .img-fallback { display: none; flex-direction: column; align-items: center; text-align: center; font-size: 0.72rem; color: var(--ddlv-muted); padding: 6px; gap: 2px; }
     .img-wrap.missing .img-fallback { display: flex; }
 
     .details { font-size: 0.86rem; display: flex; flex-direction: column; gap: 3px; }
@@ -178,16 +253,24 @@
       padding-top: 6px;
       border-top: 1px solid #f1f5f9;
     }
-    .energy { color: var(--energy); }
-    .price { color: var(--ddlv-gold); }
+    .energy { color: var(--ddlv-energy); }
+    .price { color: #9a7412; }
+
+    .empty-box {
+      background: var(--ddlv-surface);
+      border: 1px dashed var(--ddlv-border);
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
+      color: var(--ddlv-muted);
+    }
 
     @media print {
       @page { size: A5 portrait; margin: 8mm; }
       body { background: #ffffff !important; padding: 0; font-size: 9pt; }
-      .home-hero { background: #ffffff !important; color: #000000 !important; border: 1px solid #000000; padding: 10px; margin-bottom: 8px; }
-      .home-hero p { color: #334155 !important; }
-      .home-banner-box.missing { display: none; }
-      .main-nav, .toolbar, .no-print { display: none !important; }
+      .home-hero { background: #ffffff !important; color: #000000 !important; border: 1px solid #000000; padding: 10px; margin-bottom: 8px; box-shadow: none; }
+      .home-bg-layer, .dlc-status-note, .main-nav, .toolbar, .no-print { display: none !important; }
+      .home-hero h1, .home-hero p { color: #000000 !important; text-shadow: none; }
       .section-title { color: #000000 !important; border-bottom: 1px solid #000000; font-size: 11pt; margin: 10px 0 6px; }
       .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
       .card { border: 1px solid #94a3b8; padding: 8px; background: #ffffff !important; }
@@ -200,30 +283,73 @@
 <body>
   <div class="container">
     <header class="home-hero">
-      <div class="home-banner-box" id="dlc-banner">
-        <img src="images/accueil/dlc_mer_des_souvenirs.webp" alt="La Mer des Souvenirs" onerror="tryAltExt(this, ['png', 'jpg']);">
-        <div class="home-banner-fallback no-print">
-          <strong>Image d'accueil du DLC</strong>
-          <code>images/accueil/dlc_mer_des_souvenirs.webp</code>
-        </div>
+      <div class="home-bg-layer">
+        <img id="dlcBgImg" src="dlc_mer_des_souvenirs.jpg" alt="La Mer des Souvenirs" onerror="handleDlcBgError(this);">
       </div>
-      <h1>Disney Dreamlight Valley</h1>
-      <p>La Mer des Souvenirs — Guide pratique</p>
 
-      <nav class="main-nav" aria-label="Navigation principale">
-        <button class="nav-btn home-btn active" data-page="accueil">🏠 Accueil</button>
-        <button class="nav-btn" data-page="bestioles">🐾 Bestioles (15)</button>
-        <button class="nav-btn" data-page="compagnons">🤝 Compagnons (3)</button>
-        <button class="nav-btn" data-page="recettes">🍽️ Recettes (37)</button>
-        <button class="nav-btn" data-page="crafting">🛠️ Crafting (3)</button>
-        <button class="nav-btn" data-page="poissons">🎣 Poissons (12)</button>
-        <button class="nav-btn" data-page="recoltes">🌿 Récoltes (36)</button>
-      </nav>
+      <div class="home-hero-content">
+        <h1>Disney Dreamlight Valley</h1>
+        <p>La Mer des Souvenirs</p>
+        <div id="dlcStatusNote" class="dlc-status-note no-print">
+          Image du DLC attendue : <code>dlc_mer_des_souvenirs.jpg</code> (ou <code>images/accueil/dlc_mer_des_souvenirs.jpg</code>)
+        </div>
+
+        <nav class="main-nav" aria-label="Navigation principale">
+          <button class="nav-btn active" data-page="accueil">
+            <span class="nav-icon-wrap" data-icon-base="accueil">
+              <span class="nav-emoji">🏠</span>
+            </span>
+            <span>Accueil</span>
+          </button>
+
+          <button class="nav-btn" data-page="bestioles">
+            <span class="nav-icon-wrap" data-icon-base="Bestioles_icone">
+              <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
+            </span>
+            <span>Bestioles</span>
+          </button>
+
+          <button class="nav-btn" data-page="compagnons">
+            <span class="nav-icon-wrap" data-icon-base="Compagnons_icone">
+              <img src="assets/icons/Compagnons_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🤝');">
+            </span>
+            <span>Compagnons</span>
+          </button>
+
+          <button class="nav-btn" data-page="recettes">
+            <span class="nav-icon-wrap" data-icon-base="Cuisine_icone">
+              <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
+            </span>
+            <span>Recettes</span>
+          </button>
+
+          <button class="nav-btn" data-page="crafting">
+            <span class="nav-icon-wrap" data-icon-base="Crafting_icone">
+              <img src="assets/icons/Crafting_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🛠️');">
+            </span>
+            <span>Crafting</span>
+          </button>
+
+          <button class="nav-btn" data-page="poissons">
+            <span class="nav-icon-wrap" data-icon-base="Poissons">
+              <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🎣');">
+            </span>
+            <span>Poissons</span>
+          </button>
+
+          <button class="nav-btn" data-page="recoltes">
+            <span class="nav-icon-wrap" data-icon-base="Cueillette">
+              <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌿');">
+            </span>
+            <span>Récoltes</span>
+          </button>
+        </nav>
+      </div>
     </header>
 
     <div class="toolbar">
       <div class="search-group">
-        <input type="text" id="searchInput" placeholder="Rechercher en français ou anglais, ingrédient, énergie, prix...">
+        <input type="text" id="searchInput" placeholder="Rechercher par nom, ingrédient, énergie, prix...">
       </div>
       <button class="print-btn" onclick="window.print()">🖨️ Imprimer en livret A5 (Fond blanc)</button>
     </div>
@@ -235,6 +361,28 @@
     let db = null;
     let currentPage = "accueil";
     let searchText = "";
+
+    function handleDlcBgError(imgEl) {
+      if (!imgEl.dataset.triedSub) {
+        imgEl.dataset.triedSub = "1";
+        imgEl.src = "images/accueil/dlc_mer_des_souvenirs.jpg";
+        return;
+      }
+      imgEl.style.display = "none";
+      document.getElementById("dlcStatusNote").classList.add("visible");
+    }
+
+    function tryIconExt(imgEl, exts, fallbackEmoji) {
+      if (!imgEl.dataset.extIdx) imgEl.dataset.extIdx = "0";
+      const idx = parseInt(imgEl.dataset.extIdx, 10);
+      if (idx < exts.length) {
+        imgEl.dataset.extIdx = String(idx + 1);
+        const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
+        imgEl.src = `${base}.${exts[idx]}`;
+      } else {
+        imgEl.parentElement.innerHTML = `<span class="nav-emoji">${fallbackEmoji}</span>`;
+      }
+    }
 
     function normalizeStr(s) {
       return (s || "")
@@ -278,8 +426,15 @@
       return blob.includes(q);
     }
 
-    function buildSection(title, cardsHtml) {
-      if (!cardsHtml.length) return "";
+    function buildSection(title, cardsHtml, emptyText) {
+      if (!cardsHtml.length) {
+        return `
+          <section>
+            <h2 class="section-title">${title}</h2>
+            <div class="empty-box">${emptyText || "Aucun élément pour le moment."}</div>
+          </section>
+        `;
+      }
       return `
         <section>
           <h2 class="section-title">${title}</h2>
@@ -370,11 +525,10 @@
           ${imgBlock(cr.image, cr.fr)}
           <div class="details">
             <div><strong>Matériaux :</strong> ${cr.ingredients}</div>
-            <div><strong>Infos :</strong> ${cr.notes}</div>
           </div>
         </article>
       `);
-      return buildSection("Crafting", items);
+      return buildSection("Crafting", items, "Aucune fabrication ajoutée pour l'instant.");
     }
 
     function renderPoissons(list) {
@@ -421,13 +575,11 @@
       const target = document.getElementById("pageContent");
 
       if (currentPage === "accueil") {
-        target.innerHTML =
-          renderBestioles(db.bestioles) +
-          renderCompagnons(db.compagnons) +
-          renderRecettes(db.recettes) +
-          renderCrafting(db.crafting) +
-          renderPoissons(db.poissons) +
-          renderRecoltes(db.recoltes);
+        target.innerHTML = `
+          <div class="welcome-panel">
+            <strong>Bienvenue sur La Mer des Souvenirs.</strong> Cliquez sur l'une des catégories ci-dessus (Bestioles, Compagnons, Recettes, Crafting, Poissons, Récoltes) ou utilisez la barre de recherche pour afficher les fiches correspondantes.
+          </div>
+        `;
       } else if (currentPage === "bestioles") {
         target.innerHTML = renderBestioles(db.bestioles);
       } else if (currentPage === "compagnons") {
@@ -461,6 +613,10 @@
 
     document.getElementById("searchInput").addEventListener("input", e => {
       searchText = e.target.value;
+      if (currentPage === "accueil" && searchText.trim()) {
+        currentPage = "recettes";
+        document.querySelectorAll(".nav-btn").forEach(b => b.classList.toggle("active", b.dataset.page === "recettes"));
+      }
       renderPage();
     });
   </script>
