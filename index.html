@@ -6,7 +6,6 @@
   <title>Disney Dreamlight Valley — The Keepsake Sea</title>
   <style>
     :root {
-      /* Palette inspirée de keep_sake_sea.jpg : meringue rose, ciel pastel, lavande douce */
       --bg-top: #fdf1f5;
       --bg-mid: #f5ecfb;
       --bg-bottom: #eef4fc;
@@ -32,147 +31,97 @@
       background: linear-gradient(165deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bottom) 100%);
       color: var(--ink-main);
       min-height: 100vh;
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
-    /* === ÉCRAN D'ACCUEIL : IMAGE NETTE + BOUTONS COMPACTS & ÉLÉGANTS === */
-    .home-screen {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 22px 16px 40px;
-    }
-
-    .home-banner-card {
+    /* === ACCUEIL : IMAGE EN GRAND NETTE + PETITS BOUTONS COMPACTS === */
+    .home-hero {
       position: relative;
-      border-radius: 26px;
-      overflow: hidden;
-      border: 2px solid var(--meringue-pink);
-      box-shadow: 0 14px 34px rgba(143, 59, 91, 0.14);
-      background: linear-gradient(135deg, #f8d6e2 0%, #e7daf8 50%, #d8e8fb 100%);
-      display: grid;
-      grid-template-columns: minmax(240px, 340px) 1fr;
+      min-height: 100vh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      padding: 18px;
+      padding: 20px 16px 28px;
+      background: linear-gradient(160deg, #f8d7e3 0%, #eadbf8 52%, #dcebfa 100%);
+      overflow-x: hidden;
     }
 
-    .artwork-frame {
+    .home-hero.hidden {
+      display: none;
+    }
+
+    /* Cadre grand et net pour keep_sake_sea.jpg sans aucun flou */
+    .hero-art-bg {
       position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      box-shadow: 0 8px 22px rgba(53, 29, 43, 0.14);
-      background: #fcebf1;
-      aspect-ratio: 4 / 5;
-      max-height: 390px;
+      z-index: 1;
       width: 100%;
+      max-width: 540px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 14px 36px rgba(143, 59, 91, 0.18);
+      background: #fcebf1;
     }
 
-    /* Image 100% nette, sans flou */
-    .artwork-frame img {
+    .hero-art-bg img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
+      height: auto;
+      max-height: 68vh;
+      object-fit: contain;
       display: block;
       filter: none;
     }
 
-    .home-right-panel {
+    /* Petits boutons compacts qui épousent le texte à taille uniforme */
+    .tiny-buttons-row {
+      position: relative;
+      z-index: 2;
       display: flex;
-      flex-direction: column;
-      gap: 14px;
-      padding: 4px 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      max-width: 780px;
     }
 
-    .home-title-box {
-      background: rgba(255, 255, 255, 0.82);
-      border: 1.5px solid var(--border-pastel);
-      border-radius: 20px;
-      padding: 14px 18px;
-    }
-
-    .home-kicker {
-      display: inline-block;
-      font-size: 0.74rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--berry-deep);
-      background: var(--meringue-pink);
-      padding: 3px 11px;
-      border-radius: 999px;
-      margin-bottom: 6px;
-    }
-
-    .home-title-box h1 {
-      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
-      font-weight: 800;
-      color: var(--ink-main);
-    }
-
-    .home-title-box p {
-      font-size: 0.96rem;
-      font-weight: 600;
-      color: var(--berry-deep);
-      margin-top: 2px;
-    }
-
-    /* Grille de boutons compacts : taille équilibrée, pas d'énormes cartes */
-    .compact-nav-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .compact-btn {
-      background: rgba(255, 255, 255, 0.9);
-      border: 1.5px solid var(--border-pastel);
-      border-radius: 16px;
-      padding: 10px 12px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      cursor: pointer;
-      text-align: left;
-      box-shadow: 0 4px 12px rgba(143, 59, 91, 0.07);
-      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
-    }
-
-    .compact-btn:hover {
-      transform: translateY(-2px);
-      background: #ffffff;
-      border-color: var(--candy-rose);
-      box-shadow: 0 7px 16px rgba(143, 59, 91, 0.14);
-    }
-
-    .compact-icon {
-      width: 40px;
-      height: 40px;
-      flex-shrink: 0;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #fde4ec, #ece2fb);
-      border: 1px solid var(--meringue-pink);
-      display: flex;
+    .tiny-btn {
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-    }
-
-    .compact-icon img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-    }
-
-    .compact-icon .emoji-fallback {
-      font-size: 1.25rem;
-      line-height: 1;
-    }
-
-    .compact-label {
-      font-size: 0.96rem;
+      gap: 6px;
+      height: 36px;
+      min-width: 112px;
+      padding: 0 12px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 999px;
+      font-size: 0.84rem;
       font-weight: 800;
       color: var(--ink-main);
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 10px rgba(143, 59, 91, 0.1);
+      transition: transform 0.14s ease, border-color 0.14s ease, background 0.14s ease;
+    }
+
+    .tiny-btn:hover {
+      transform: translateY(-1px);
+      background: #ffffff;
+      border-color: var(--candy-rose);
+    }
+
+    .tiny-btn img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .tiny-btn .tiny-emoji {
+      font-size: 0.95rem;
+      line-height: 1;
     }
 
     /* === VUE DE CATÉGORIE === */
@@ -185,10 +134,6 @@
 
     .app-view.active {
       display: block;
-    }
-
-    .home-screen.hidden {
-      display: none;
     }
 
     .top-bar {
@@ -209,15 +154,11 @@
       background: linear-gradient(135deg, #fbe0e9, #ece2fb);
       color: var(--ink-main);
       border: 1.5px solid var(--meringue-pink);
-      border-radius: 12px;
-      padding: 8px 14px;
+      border-radius: 999px;
+      padding: 7px 14px;
       font-weight: 800;
-      font-size: 0.9rem;
+      font-size: 0.86rem;
       cursor: pointer;
-    }
-
-    .back-home-btn:hover {
-      border-color: var(--candy-rose);
     }
 
     .current-cat-header {
@@ -249,7 +190,7 @@
       background: rgba(255, 255, 255, 0.88);
       border: 1.5px solid var(--border-pastel);
       border-radius: 999px;
-      padding: 6px 12px;
+      padding: 5px 12px;
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--ink-main);
@@ -260,8 +201,8 @@
     }
 
     .quick-pill img {
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
       object-fit: contain;
     }
 
@@ -270,7 +211,6 @@
       border-color: var(--candy-rose);
     }
 
-    /* Boutons de sous-catégories */
     .subcat-bar {
       display: flex;
       flex-wrap: wrap;
@@ -281,24 +221,17 @@
     .subcat-btn {
       background: rgba(255, 255, 255, 0.9);
       border: 1.5px solid var(--border-pastel);
-      border-radius: 14px;
-      padding: 9px 15px;
-      font-size: 0.88rem;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.86rem;
       font-weight: 800;
       color: var(--ink-main);
       cursor: pointer;
-      transition: all 0.14s ease;
-    }
-
-    .subcat-btn:hover {
-      border-color: var(--candy-rose);
-      background: #ffffff;
     }
 
     .subcat-btn.active {
       background: linear-gradient(135deg, #f6c9d9, #e1d2f6);
       border-color: var(--candy-rose);
-      color: var(--ink-main);
       box-shadow: 0 4px 12px rgba(212, 106, 142, 0.18);
     }
 
@@ -338,16 +271,16 @@
       background: linear-gradient(135deg, var(--candy-rose), #a5649e);
       color: #ffffff;
       border: none;
-      border-radius: 11px;
-      padding: 9px 14px;
+      border-radius: 999px;
+      padding: 8px 15px;
       font-weight: 700;
-      font-size: 0.86rem;
+      font-size: 0.85rem;
       cursor: pointer;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 14px;
     }
 
@@ -358,7 +291,7 @@
       padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 8px;
       box-shadow: var(--shadow-card);
       break-inside: avoid;
       page-break-inside: avoid;
@@ -373,12 +306,12 @@
 
     .card-title {
       font-weight: 800;
-      font-size: 1rem;
+      font-size: 0.98rem;
       color: var(--ink-main);
     }
 
     .card-sub {
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       color: var(--ink-soft);
       font-style: italic;
     }
@@ -396,15 +329,15 @@
 
     .img-wrap {
       width: 100%;
-      height: 104px;
+      height: 100px;
       border: 1px solid #f7e3eb;
-      border-radius: 13px;
+      border-radius: 12px;
       background: linear-gradient(180deg, #fffdfe 0%, #fbf3f8 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      padding: 6px;
+      padding: 5px;
     }
 
     .img-wrap img {
@@ -418,9 +351,9 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      font-size: 0.68rem;
+      font-size: 0.66rem;
       color: var(--ink-soft);
-      padding: 4px;
+      padding: 3px;
       gap: 2px;
       word-break: break-all;
     }
@@ -430,7 +363,7 @@
     }
 
     .details {
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       display: flex;
       flex-direction: column;
       gap: 3px;
@@ -438,11 +371,11 @@
 
     .footer-meta {
       display: flex;
-      gap: 12px;
-      font-size: 0.83rem;
+      gap: 10px;
+      font-size: 0.82rem;
       font-weight: 800;
       margin-top: auto;
-      padding-top: 7px;
+      padding-top: 6px;
       border-top: 1px solid #f7e6ee;
     }
 
@@ -459,97 +392,140 @@
       font-weight: 600;
     }
 
-    @media (max-width: 740px) {
-      .home-banner-card {
-        grid-template-columns: 1fr;
-      }
-      .artwork-frame {
-        max-width: 270px;
-        margin: 0 auto;
-        max-height: 310px;
-      }
-    }
-
-    @media (max-width: 460px) {
-      .compact-nav-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
+    /* === IMPRESSION COMPACTE : MAXIMUM DE FICHES PAR PAGE === */
     @media print {
-      @page { size: A5 portrait; margin: 8mm; }
-      body { background: #ffffff !important; padding: 0; font-size: 9pt; color: #000000; }
-      .home-screen, .back-home-btn, .quick-switcher, .subcat-bar, .toolbar, .no-print { display: none !important; }
-      .app-view { display: block !important; padding: 0; }
-      .top-bar { border: 1px solid #000000; box-shadow: none; padding: 8px 12px; margin-bottom: 10px; }
-      .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .card { border: 1px solid #94a3b8; padding: 8px; background: #ffffff !important; box-shadow: none; }
-      .card-title { color: #000000 !important; }
-      .img-wrap { height: 62px; border: none; background: #ffffff !important; }
-      .img-wrap.missing { display: none; }
+      @page {
+        size: A4 portrait;
+        margin: 5mm;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 7.4pt !important;
+        line-height: 1.22 !important;
+        color: #000000 !important;
+      }
+      .home-hero,
+      .back-home-btn,
+      .quick-switcher,
+      .subcat-bar,
+      .toolbar,
+      .print-btn,
+      .no-print {
+        display: none !important;
+      }
+      .app-view {
+        display: block !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .top-bar {
+        border: none !important;
+        border-bottom: 1px solid #333 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        padding: 0 0 4px 0 !important;
+        margin-bottom: 6px !important;
+      }
+      .current-cat-header h2 {
+        font-size: 10.5pt !important;
+      }
+      .current-cat-header img {
+        width: 16px !important;
+        height: 16px !important;
+      }
+      .grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 5px !important;
+      }
+      .card {
+        border: 0.75px solid #999 !important;
+        border-radius: 6px !important;
+        padding: 5px 6px !important;
+        gap: 3px !important;
+        background: #ffffff !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      .card-title {
+        font-size: 7.8pt !important;
+        color: #000000 !important;
+      }
+      .card-sub {
+        font-size: 6.4pt !important;
+      }
+      .tag {
+        font-size: 6.2pt !important;
+        padding: 1px 4px !important;
+        background: #f5f5f5 !important;
+        border-color: #bbb !important;
+        color: #000000 !important;
+      }
+      .img-wrap {
+        height: 36px !important;
+        padding: 1px !important;
+        border: none !important;
+        background: #ffffff !important;
+      }
+      .img-wrap.missing {
+        display: none !important;
+      }
+      .details {
+        font-size: 6.8pt !important;
+        gap: 1px !important;
+      }
+      .footer-meta {
+        font-size: 6.6pt !important;
+        padding-top: 2px !important;
+        margin-top: 2px !important;
+        gap: 6px !important;
+        border-top: 0.5px solid #ddd !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ÉCRAN D'ACCUEIL -->
-  <section id="homeScreen" class="home-screen">
-    <div class="home-banner-card">
-      <div class="artwork-frame">
-        <img src="images/accueil/keep_sake_sea.jpg" alt="Disney Dreamlight Valley — The Keepsake Sea" onerror="handleWelcomeImgError(this);">
-      </div>
+  <!-- ACCUEIL : IMAGE NETTE EN GRAND + PETITS BOUTONS COMPACTS -->
+  <section id="homeHero" class="home-hero">
+    <div class="hero-art-bg">
+      <img src="images/accueil/keep_sake_sea.jpg" alt="Disney Dreamlight Valley — The Keepsake Sea" onerror="handleWelcomeImgError(this);">
+    </div>
 
-      <div class="home-right-panel">
-        <div class="home-title-box">
-          <span class="home-kicker">The Keepsake Sea</span>
-          <h1>Disney Dreamlight Valley</h1>
-          <p>La Mer des Souvenirs</p>
-        </div>
+    <div class="tiny-buttons-row" id="tinyButtonsRow">
+      <button class="tiny-btn" data-cat="bestioles">
+        <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
+        <span>Bestioles</span>
+      </button>
 
-        <div class="compact-nav-grid" id="compactNavGrid">
-          <button class="compact-btn" data-cat="bestioles">
-            <span class="compact-icon">
-              <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
-            </span>
-            <span class="compact-label">Bestioles</span>
-          </button>
+      <button class="tiny-btn" data-cat="compagnons">
+        <img src="assets/icons/compagnons_icone.png" alt="" onerror="tryIconFallback(this, ['assets/icons/Compagnons_icone.webp', 'assets/icons/Compagnons_icone.png'], '🐠');">
+        <span>Compagnons</span>
+      </button>
 
-          <button class="compact-btn" data-cat="compagnons">
-            <span class="compact-icon">
-              <img src="assets/icons/compagnons_icone.png" alt="" onerror="tryIconFallback(this, ['assets/icons/Compagnons_icone.webp', 'assets/icons/Compagnons_icone.png'], '🐠');">
-            </span>
-            <span class="compact-label">Compagnons</span>
-          </button>
+      <button class="tiny-btn" data-cat="recettes">
+        <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
+        <span>Recettes</span>
+      </button>
 
-          <button class="compact-btn" data-cat="recettes">
-            <span class="compact-icon">
-              <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
-            </span>
-            <span class="compact-label">Recettes</span>
-          </button>
+      <button class="tiny-btn" data-cat="crafting">
+        <img src="assets/icons/Artisanat_icone.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Crafting_icone.webp', 'assets/icons/Crafting_icone.png'], '🛠️');">
+        <span>Crafting</span>
+      </button>
 
-          <button class="compact-btn" data-cat="crafting">
-            <span class="compact-icon">
-              <img src="assets/icons/Artisanat_icone.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Crafting_icone.webp', 'assets/icons/Crafting_icone.png'], '🛠️');">
-            </span>
-            <span class="compact-label">Crafting</span>
-          </button>
+      <button class="tiny-btn" data-cat="poissons">
+        <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Peche_icone.webp', 'assets/icons/Poissons.png'], '🎣');">
+        <span>Poissons</span>
+      </button>
 
-          <button class="compact-btn" data-cat="poissons">
-            <span class="compact-icon">
-              <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Peche_icone.webp', 'assets/icons/Poissons.png'], '🎣');">
-            </span>
-            <span class="compact-label">Poissons</span>
-          </button>
-
-          <button class="compact-btn" data-cat="recoltes">
-            <span class="compact-icon">
-              <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌸');">
-            </span>
-            <span class="compact-label">Récoltes</span>
-          </button>
-        </div>
-      </div>
+      <button class="tiny-btn" data-cat="recoltes">
+        <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌸');">
+        <span>Récoltes</span>
+      </button>
     </div>
   </section>
 
@@ -558,7 +534,7 @@
     <div class="top-bar">
       <button class="back-home-btn" id="backHomeBtn">← Accueil</button>
       <div class="current-cat-header" id="currentCatHeader"></div>
-      <button class="print-btn" onclick="window.print()">🖨️ Imprimer en livret A5</button>
+      <button class="print-btn" onclick="window.print()">🖨️ Imprimer (compact)</button>
     </div>
 
     <div class="quick-switcher" id="quickSwitcher"></div>
@@ -581,12 +557,12 @@
     let searchText = "";
 
     const CATEGORIES = [
-      { id: "bestioles", label: "Bestioles", icon: "assets/icons/Bestioles_icone.webp", alts: ["assets/icons/Bestioles_icone.png"], emoji: "🐾" },
-      { id: "compagnons", label: "Compagnons", icon: "assets/icons/compagnons_icone.png", alts: ["assets/icons/Compagnons_icone.webp"], emoji: "🐠" },
-      { id: "recettes", label: "Recettes", icon: "assets/icons/Cuisine_icone.webp", alts: ["assets/icons/Cuisine_icone.png"], emoji: "🍽️" },
-      { id: "crafting", label: "Crafting", icon: "assets/icons/Artisanat_icone.webp", alts: ["assets/icons/Crafting_icone.webp"], emoji: "🛠️" },
-      { id: "poissons", label: "Poissons", icon: "assets/icons/Poissons.webp", alts: ["assets/icons/Peche_icone.webp"], emoji: "🎣" },
-      { id: "recoltes", label: "Récoltes", icon: "assets/icons/Cueillette.webp", alts: ["assets/icons/Cueillette.png"], emoji: "🌸" }
+      { id: "bestioles", label: "Bestioles", icon: "assets/icons/Bestioles_icone.webp", emoji: "🐾" },
+      { id: "compagnons", label: "Compagnons", icon: "assets/icons/compagnons_icone.png", emoji: "🐠" },
+      { id: "recettes", label: "Recettes", icon: "assets/icons/Cuisine_icone.webp", emoji: "🍽️" },
+      { id: "crafting", label: "Crafting", icon: "assets/icons/Artisanat_icone.webp", emoji: "🛠️" },
+      { id: "poissons", label: "Poissons", icon: "assets/icons/Poissons.webp", emoji: "🎣" },
+      { id: "recoltes", label: "Récoltes", icon: "assets/icons/Cueillette.webp", emoji: "🌸" }
     ];
 
     const RECETTES_SUBS = ["Hors-d'oeuvre", "Plats principaux", "Desserts"];
@@ -620,7 +596,8 @@
         const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
         imgEl.src = `${base}.${exts[idx]}`;
       } else {
-        imgEl.parentElement.innerHTML = `<span class="emoji-fallback">${fallbackEmoji}</span>`;
+        imgEl.insertAdjacentHTML("beforebegin", `<span class="tiny-emoji">${fallbackEmoji}</span>`);
+        imgEl.remove();
       }
     }
 
@@ -631,7 +608,8 @@
         imgEl.dataset.fbIdx = String(idx + 1);
         imgEl.src = list[idx];
       } else {
-        imgEl.parentElement.innerHTML = `<span class="emoji-fallback">${fallbackEmoji}</span>`;
+        imgEl.insertAdjacentHTML("beforebegin", `<span class="tiny-emoji">${fallbackEmoji}</span>`);
+        imgEl.remove();
       }
     }
 
@@ -642,6 +620,10 @@
         .toLowerCase()
         .replace(/\s+/g, " ")
         .trim();
+    }
+
+    function encodePathSegments(pathStr) {
+      return pathStr.split("/").map(seg => encodeURIComponent(seg)).join("/");
     }
 
     function buildImageCandidates(rawSrc) {
@@ -656,10 +638,12 @@
       const candidates = [];
       for (const ext of exts) {
         for (const base of baseNoExtList) {
-          candidates.push(encodeURI(`${base}.${ext}`));
+          const full = `${base}.${ext}`;
+          candidates.push(encodePathSegments(full));
+          candidates.push(encodeURI(full));
         }
       }
-      return candidates;
+      return [...new Set(candidates)];
     }
 
     function handleImgFallback(imgEl) {
@@ -676,7 +660,7 @@
 
     function imgBlock(src, alt) {
       const candidates = buildImageCandidates(src);
-      const firstSrc = candidates[0] || encodeURI(src);
+      const firstSrc = candidates[0] || encodePathSegments(src);
       const encodedList = JSON.stringify(candidates).replace(/"/g, "&quot;");
       return `
         <div class="img-wrap">
@@ -716,7 +700,7 @@
         currentSubCat = null;
       }
 
-      document.getElementById("homeScreen").classList.add("hidden");
+      document.getElementById("homeHero").classList.add("hidden");
       document.getElementById("appView").classList.add("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
       renderCategoryView();
@@ -726,7 +710,7 @@
       currentCat = null;
       currentSubCat = null;
       document.getElementById("appView").classList.remove("active");
-      document.getElementById("homeScreen").classList.remove("hidden");
+      document.getElementById("homeHero").classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -920,7 +904,7 @@
         db = data;
       });
 
-    document.querySelectorAll(".compact-btn").forEach(btn => {
+    document.querySelectorAll(".tiny-btn").forEach(btn => {
       btn.addEventListener("click", () => openCategory(btn.dataset.cat));
     });
 
