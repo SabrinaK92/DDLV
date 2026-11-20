@@ -3,406 +3,363 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Disney Dreamlight Valley — La Mer des Souvenirs</title>
+  <title>Disney Dreamlight Valley — The Keepsake Sea</title>
   <style>
     :root {
-      --bg-blush: #fdf6f8;
-      --bg-petal: #fceef3;
-      --surface-glass: rgba(255, 255, 255, 0.86);
-      --surface-solid: #ffffff;
-      --rose-poudre: #e8a5b8;
-      --rose-deep: #b85d79;
-      --rose-soft: #f9dfe7;
-      --lilac-soft: #efe6fa;
-      --peach-soft: #fdebe4;
-      --ink-plum: #3b2735;
-      --ink-muted: #7a5c6e;
-      --border-soft: #f0d3de;
-      --shadow-soft: 0 10px 28px rgba(184, 93, 121, 0.12);
-      --energy-pill: #5b7db1;
-      --gold-pill: #b07d3b;
+      /* Palette inspirée de keep_sake_sea.jpg : meringue rose, ciel pastel, lavande douce */
+      --bg-top: #fdf1f5;
+      --bg-mid: #f5ecfb;
+      --bg-bottom: #eef4fc;
+      --surface: #ffffff;
+      --surface-tint: #fff8fa;
+      --meringue-pink: #f7cad7;
+      --candy-rose: #d46a8e;
+      --berry-deep: #8f3b5b;
+      --pastel-sky: #cfe0f7;
+      --pastel-lilac: #e3d6f7;
+      --ink-main: #351d2b;
+      --ink-soft: #785568;
+      --border-pastel: #f0cedb;
+      --shadow-card: 0 6px 18px rgba(143, 59, 91, 0.09);
+      --energy-color: #4f78b5;
+      --gold-color: #b57c35;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: linear-gradient(160deg, #fdf4f7 0%, #f8eef8 50%, #fdf6f2 100%);
-      color: var(--ink-plum);
+      background: linear-gradient(165deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bottom) 100%);
+      color: var(--ink-main);
       min-height: 100vh;
       line-height: 1.45;
     }
 
-    /* === ÉCRAN D'ACCUEIL PLEINE PAGE === */
-    .welcome-screen {
+    /* === ÉCRAN D'ACCUEIL : IMAGE NETTE + BOUTONS COMPACTS & ÉLÉGANTS === */
+    .home-screen {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 22px 16px 40px;
+    }
+
+    .home-banner-card {
       position: relative;
-      min-height: 100vh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      padding: 36px 20px 44px;
+      border-radius: 26px;
       overflow: hidden;
-      background: linear-gradient(135deg, #f6d5e1 0%, #e4d4f4 50%, #fbdcd2 100%);
+      border: 2px solid var(--meringue-pink);
+      box-shadow: 0 14px 34px rgba(143, 59, 91, 0.14);
+      background: linear-gradient(135deg, #f8d6e2 0%, #e7daf8 50%, #d8e8fb 100%);
+      display: grid;
+      grid-template-columns: minmax(240px, 340px) 1fr;
+      align-items: center;
+      gap: 20px;
+      padding: 18px;
     }
 
-    .welcome-screen.hidden {
-      display: none;
+    .artwork-frame {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.85);
+      box-shadow: 0 8px 22px rgba(53, 29, 43, 0.14);
+      background: #fcebf1;
+      aspect-ratio: 4 / 5;
+      max-height: 390px;
+      width: 100%;
     }
 
-    .welcome-bg-full {
-      position: absolute;
-      inset: 0;
+    /* Image 100% nette, sans flou */
+    .artwork-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      z-index: 0;
+      object-position: center top;
+      display: block;
+      filter: none;
     }
 
-    .welcome-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background: linear-gradient(
-        180deg,
-        rgba(46, 24, 41, 0.36) 0%,
-        rgba(253, 242, 247, 0.52) 48%,
-        rgba(252, 236, 243, 0.84) 100%
-      );
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-    }
-
-    .welcome-header {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      max-width: 720px;
-      margin-top: 8px;
-      padding: 20px 28px;
-      border-radius: 26px;
-      background: rgba(255, 248, 251, 0.78);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1.5px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 12px 32px rgba(92, 43, 68, 0.14);
-    }
-
-    .welcome-badge {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--rose-deep);
-      background: var(--rose-soft);
-      padding: 4px 14px;
-      border-radius: 999px;
-      margin-bottom: 8px;
-    }
-
-    .welcome-header h1 {
-      font-size: clamp(1.7rem, 3.6vw, 2.5rem);
-      font-weight: 800;
-      color: var(--ink-plum);
-      letter-spacing: -0.01em;
-    }
-
-    .welcome-header p {
-      font-size: clamp(1rem, 2vw, 1.2rem);
-      font-weight: 600;
-      color: var(--rose-deep);
-      margin-top: 4px;
-    }
-
-    /* Grille 2 colonnes de grands boutons d'accueil */
-    .home-grid {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 760px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin: auto 0;
-      padding: 24px 0;
-    }
-
-    .home-tile {
-      background: rgba(255, 252, 254, 0.88);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 2px solid rgba(232, 165, 184, 0.65);
-      border-radius: 22px;
-      padding: 22px 18px;
+    .home-right-panel {
       display: flex;
       flex-direction: column;
+      gap: 14px;
+      padding: 4px 6px;
+    }
+
+    .home-title-box {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 20px;
+      padding: 14px 18px;
+    }
+
+    .home-kicker {
+      display: inline-block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--berry-deep);
+      background: var(--meringue-pink);
+      padding: 3px 11px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .home-title-box h1 {
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      font-weight: 800;
+      color: var(--ink-main);
+    }
+
+    .home-title-box p {
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: var(--berry-deep);
+      margin-top: 2px;
+    }
+
+    /* Grille de boutons compacts : taille équilibrée, pas d'énormes cartes */
+    .compact-nav-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .compact-btn {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 16px;
+      padding: 10px 12px;
+      display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 12px;
+      gap: 11px;
       cursor: pointer;
-      box-shadow: 0 10px 24px rgba(184, 93, 121, 0.14);
-      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(143, 59, 91, 0.07);
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
     }
 
-    .home-tile:hover {
-      transform: translateY(-3px);
+    .compact-btn:hover {
+      transform: translateY(-2px);
       background: #ffffff;
-      border-color: var(--rose-deep);
-      box-shadow: 0 14px 30px rgba(184, 93, 121, 0.22);
+      border-color: var(--candy-rose);
+      box-shadow: 0 7px 16px rgba(143, 59, 91, 0.14);
     }
 
-    /* Si nombre impair (7 boutons), le dernier s'étire joliment ou reste centré */
-    .home-tile.span-full {
-      grid-column: 1 / -1;
-      max-width: 372px;
-      width: 100%;
-      justify-self: center;
-    }
-
-    .tile-icon-box {
-      width: 64px;
-      height: 64px;
-      border-radius: 18px;
-      background: linear-gradient(145deg, #fce8ef, #f3e8fc);
-      border: 1.5px solid var(--border-soft);
+    .compact-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #fde4ec, #ece2fb);
+      border: 1px solid var(--meringue-pink);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 2px 6px rgba(255, 255, 255, 0.9);
     }
 
-    .tile-icon-box img {
-      width: 44px;
-      height: 44px;
+    .compact-icon img {
+      width: 28px;
+      height: 28px;
       object-fit: contain;
     }
 
-    .tile-icon-box .tile-emoji {
-      font-size: 2rem;
+    .compact-icon .emoji-fallback {
+      font-size: 1.25rem;
       line-height: 1;
     }
 
-    .tile-label {
-      font-size: 1.12rem;
+    .compact-label {
+      font-size: 0.96rem;
       font-weight: 800;
-      color: var(--ink-plum);
+      color: var(--ink-main);
     }
 
-    .tile-sub {
-      font-size: 0.8rem;
-      color: var(--ink-muted);
-      margin-top: -6px;
-    }
-
-    /* === VUE INTERNE D'UNE CATÉGORIE === */
+    /* === VUE DE CATÉGORIE === */
     .app-view {
       display: none;
       max-width: 1180px;
       margin: 0 auto;
-      padding: 20px 16px 48px;
+      padding: 18px 16px 48px;
     }
 
     .app-view.active {
       display: block;
     }
 
+    .home-screen.hidden {
+      display: none;
+    }
+
     .top-bar {
-      background: var(--surface-solid);
-      border: 1.5px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-pastel);
       border-radius: 20px;
-      padding: 14px 18px;
-      margin-bottom: 18px;
-      box-shadow: var(--shadow-soft);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-card);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .back-home-btn {
-      background: linear-gradient(135deg, #f9dfe7, #efe4fa);
-      color: var(--ink-plum);
-      border: 1.5px solid var(--rose-poudre);
-      border-radius: 14px;
-      padding: 10px 16px;
+      background: linear-gradient(135deg, #fbe0e9, #ece2fb);
+      color: var(--ink-main);
+      border: 1.5px solid var(--meringue-pink);
+      border-radius: 12px;
+      padding: 8px 14px;
       font-weight: 800;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.15s ease;
     }
 
     .back-home-btn:hover {
-      background: var(--rose-soft);
-      border-color: var(--rose-deep);
+      border-color: var(--candy-rose);
     }
 
     .current-cat-header {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .current-cat-header img {
-      width: 36px;
-      height: 36px;
+      width: 30px;
+      height: 30px;
       object-fit: contain;
     }
 
     .current-cat-header h2 {
-      font-size: 1.45rem;
+      font-size: 1.3rem;
       font-weight: 800;
-      color: var(--ink-plum);
+      color: var(--ink-main);
     }
 
-    /* Barre d'accès rapide entre catégories en haut */
     .quick-switcher {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .quick-pill {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ink-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-pill img {
+      width: 18px;
+      height: 18px;
+      object-fit: contain;
+    }
+
+    .quick-pill.active {
+      background: linear-gradient(135deg, #f8d4e1, #e5d8f8);
+      border-color: var(--candy-rose);
+    }
+
+    /* Boutons de sous-catégories */
+    .subcat-bar {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 16px;
     }
 
-    .quick-pill {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1.5px solid var(--border-soft);
-      border-radius: 999px;
-      padding: 7px 14px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--ink-plum);
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-
-    .quick-pill img {
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-    }
-
-    .quick-pill:hover {
-      border-color: var(--rose-poudre);
-      background: #ffffff;
-    }
-
-    .quick-pill.active {
-      background: linear-gradient(135deg, #f7d6e2, #eadcf8);
-      border-color: var(--rose-deep);
-      color: var(--ink-plum);
-    }
-
-    /* Sous-navigation (Hors-d'oeuvre / Plats / Desserts ou Sous l'eau / Fleurs...) */
-    .subcat-bar {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
     .subcat-btn {
-      background: #ffffff;
-      border: 1.5px solid var(--border-soft);
-      border-radius: 16px;
-      padding: 13px 14px;
-      font-size: 0.94rem;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 14px;
+      padding: 9px 15px;
+      font-size: 0.88rem;
       font-weight: 800;
-      color: var(--ink-plum);
+      color: var(--ink-main);
       cursor: pointer;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(184, 93, 121, 0.06);
-      transition: all 0.15s ease;
+      transition: all 0.14s ease;
     }
 
     .subcat-btn:hover {
-      border-color: var(--rose-poudre);
-      transform: translateY(-1px);
+      border-color: var(--candy-rose);
+      background: #ffffff;
     }
 
     .subcat-btn.active {
-      background: linear-gradient(135deg, #f6cedc, #e6d6f7);
-      border-color: var(--rose-deep);
-      color: var(--ink-plum);
-      box-shadow: 0 6px 16px rgba(184, 93, 121, 0.16);
+      background: linear-gradient(135deg, #f6c9d9, #e1d2f6);
+      border-color: var(--candy-rose);
+      color: var(--ink-main);
+      box-shadow: 0 4px 12px rgba(212, 106, 142, 0.18);
     }
 
-    /* Barre de recherche & impression */
     .toolbar {
-      background: var(--surface-solid);
-      border: 1.5px solid var(--border-soft);
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-pastel);
       border-radius: 16px;
-      padding: 12px 14px;
-      margin-bottom: 20px;
+      padding: 10px 14px;
+      margin-bottom: 18px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 14px rgba(184, 93, 121, 0.06);
     }
 
     .search-group {
-      display: flex;
-      flex: 1 1 280px;
+      flex: 1 1 260px;
     }
 
     input[type="text"] {
       width: 100%;
-      padding: 10px 14px;
-      border: 1.5px solid var(--border-soft);
-      border-radius: 12px;
-      font-size: 0.94rem;
-      color: var(--ink-plum);
-      background: #fff9fb;
+      padding: 9px 13px;
+      border: 1.5px solid var(--border-pastel);
+      border-radius: 11px;
+      font-size: 0.92rem;
+      color: var(--ink-main);
+      background: var(--surface-tint);
       outline: none;
     }
 
     input[type="text"]:focus {
-      border-color: var(--rose-deep);
+      border-color: var(--candy-rose);
       background: #ffffff;
     }
 
     .print-btn {
-      background: linear-gradient(135deg, #d87a98, #b86b9e);
+      background: linear-gradient(135deg, var(--candy-rose), #a5649e);
       color: #ffffff;
       border: none;
-      border-radius: 12px;
-      padding: 10px 16px;
+      border-radius: 11px;
+      padding: 9px 14px;
       font-weight: 700;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(184, 93, 121, 0.22);
     }
 
-    .print-btn:hover {
-      opacity: 0.94;
-    }
-
-    /* Grille de fiches */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+      gap: 14px;
     }
 
     .card {
-      background: var(--surface-solid);
-      border: 1.5px solid var(--border-soft);
+      background: var(--surface);
+      border: 1.5px solid var(--border-pastel);
       border-radius: 18px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 6px 18px rgba(184, 93, 121, 0.08);
+      gap: 9px;
+      box-shadow: var(--shadow-card);
       break-inside: avoid;
       page-break-inside: avoid;
     }
@@ -416,33 +373,33 @@
 
     .card-title {
       font-weight: 800;
-      font-size: 1.04rem;
-      color: var(--ink-plum);
+      font-size: 1rem;
+      color: var(--ink-main);
     }
 
     .card-sub {
-      font-size: 0.8rem;
-      color: var(--ink-muted);
+      font-size: 0.78rem;
+      color: var(--ink-soft);
       font-style: italic;
     }
 
     .tag {
-      background: var(--rose-soft);
-      color: var(--rose-deep);
-      border: 1px solid var(--rose-poudre);
-      font-size: 0.75rem;
+      background: #fce6ee;
+      color: var(--berry-deep);
+      border: 1px solid var(--meringue-pink);
+      font-size: 0.72rem;
       font-weight: 800;
-      padding: 3px 9px;
+      padding: 2px 8px;
       border-radius: 999px;
       white-space: nowrap;
     }
 
     .img-wrap {
       width: 100%;
-      height: 112px;
-      border: 1px solid #f5e1e9;
-      border-radius: 14px;
-      background: linear-gradient(180deg, #fffcfd 0%, #fdf4f8 100%);
+      height: 104px;
+      border: 1px solid #f7e3eb;
+      border-radius: 13px;
+      background: linear-gradient(180deg, #fffdfe 0%, #fbf3f8 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -461,10 +418,11 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      font-size: 0.72rem;
-      color: var(--ink-muted);
-      padding: 6px;
+      font-size: 0.68rem;
+      color: var(--ink-soft);
+      padding: 4px;
       gap: 2px;
+      word-break: break-all;
     }
 
     .img-wrap.missing .img-fallback {
@@ -472,57 +430,56 @@
     }
 
     .details {
-      font-size: 0.87rem;
+      font-size: 0.85rem;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      color: var(--ink-plum);
+      gap: 3px;
     }
 
     .footer-meta {
       display: flex;
       gap: 12px;
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       font-weight: 800;
       margin-top: auto;
-      padding-top: 8px;
-      border-top: 1px solid #f7e6ed;
+      padding-top: 7px;
+      border-top: 1px solid #f7e6ee;
     }
 
-    .energy { color: var(--energy-pill); }
-    .price { color: var(--gold-pill); }
+    .energy { color: var(--energy-color); }
+    .price { color: var(--gold-color); }
 
     .empty-box {
-      background: var(--surface-solid);
-      border: 1.5px dashed var(--rose-poudre);
+      background: var(--surface);
+      border: 1.5px dashed var(--meringue-pink);
       border-radius: 18px;
-      padding: 32px 20px;
+      padding: 28px 18px;
       text-align: center;
-      color: var(--ink-muted);
+      color: var(--ink-soft);
       font-weight: 600;
     }
 
-    @media (max-width: 520px) {
-      .home-grid {
-        gap: 12px;
+    @media (max-width: 740px) {
+      .home-banner-card {
+        grid-template-columns: 1fr;
       }
-      .home-tile {
-        padding: 18px 12px;
+      .artwork-frame {
+        max-width: 270px;
+        margin: 0 auto;
+        max-height: 310px;
       }
-      .tile-icon-box {
-        width: 54px;
-        height: 54px;
-      }
-      .tile-icon-box img {
-        width: 36px;
-        height: 36px;
+    }
+
+    @media (max-width: 460px) {
+      .compact-nav-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media print {
       @page { size: A5 portrait; margin: 8mm; }
       body { background: #ffffff !important; padding: 0; font-size: 9pt; color: #000000; }
-      .welcome-screen, .back-home-btn, .quick-switcher, .subcat-bar, .toolbar, .no-print { display: none !important; }
+      .home-screen, .back-home-btn, .quick-switcher, .subcat-bar, .toolbar, .no-print { display: none !important; }
       .app-view { display: block !important; padding: 0; }
       .top-bar { border: 1px solid #000000; box-shadow: none; padding: 8px 12px; margin-bottom: 10px; }
       .grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
@@ -535,69 +492,68 @@
 </head>
 <body>
 
-  <!-- 1. ÉCRAN D'ACCUEIL PLEINE PAGE -->
-  <section id="welcomeScreen" class="welcome-screen">
-    <img id="dlcFullBg" class="welcome-bg-full" src="dlc_mer_des_souvenirs.jpg" alt="La Mer des Souvenirs" onerror="handleDlcBgError(this);">
-    <div class="welcome-overlay"></div>
+  <!-- ÉCRAN D'ACCUEIL -->
+  <section id="homeScreen" class="home-screen">
+    <div class="home-banner-card">
+      <div class="artwork-frame">
+        <img src="images/accueil/keep_sake_sea.jpg" alt="Disney Dreamlight Valley — The Keepsake Sea" onerror="handleWelcomeImgError(this);">
+      </div>
 
-    <div class="welcome-header">
-      <span class="welcome-badge">Guide de collection</span>
-      <h1>Disney Dreamlight Valley</h1>
-      <p>La Mer des Souvenirs</p>
-    </div>
-
-    <div class="home-grid" id="homeGrid">
-      <button class="home-tile" data-cat="bestioles">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
+      <div class="home-right-panel">
+        <div class="home-title-box">
+          <span class="home-kicker">The Keepsake Sea</span>
+          <h1>Disney Dreamlight Valley</h1>
+          <p>La Mer des Souvenirs</p>
         </div>
-        <span class="tile-label">Bestioles</span>
-        <span class="tile-sub">15 créatures</span>
-      </button>
 
-      <button class="home-tile" data-cat="compagnons">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Compagnons_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐠');">
-        </div>
-        <span class="tile-label">Compagnons</span>
-        <span class="tile-sub">Dory, Polochon, Sébastien</span>
-      </button>
+        <div class="compact-nav-grid" id="compactNavGrid">
+          <button class="compact-btn" data-cat="bestioles">
+            <span class="compact-icon">
+              <img src="assets/icons/Bestioles_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🐾');">
+            </span>
+            <span class="compact-label">Bestioles</span>
+          </button>
 
-      <button class="home-tile" data-cat="recettes">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
-        </div>
-        <span class="tile-label">Recettes</span>
-        <span class="tile-sub">Entrées, plats, desserts</span>
-      </button>
+          <button class="compact-btn" data-cat="compagnons">
+            <span class="compact-icon">
+              <img src="assets/icons/compagnons_icone.png" alt="" onerror="tryIconFallback(this, ['assets/icons/Compagnons_icone.webp', 'assets/icons/Compagnons_icone.png'], '🐠');">
+            </span>
+            <span class="compact-label">Compagnons</span>
+          </button>
 
-      <button class="home-tile" data-cat="crafting">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Crafting_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🛠️');">
-        </div>
-        <span class="tile-label">Crafting</span>
-        <span class="tile-sub">Fabrications</span>
-      </button>
+          <button class="compact-btn" data-cat="recettes">
+            <span class="compact-icon">
+              <img src="assets/icons/Cuisine_icone.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🍽️');">
+            </span>
+            <span class="compact-label">Recettes</span>
+          </button>
 
-      <button class="home-tile" data-cat="poissons">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🎣');">
-        </div>
-        <span class="tile-label">Poissons</span>
-        <span class="tile-sub">Pêche & fruits de mer</span>
-      </button>
+          <button class="compact-btn" data-cat="crafting">
+            <span class="compact-icon">
+              <img src="assets/icons/Artisanat_icone.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Crafting_icone.webp', 'assets/icons/Crafting_icone.png'], '🛠️');">
+            </span>
+            <span class="compact-label">Crafting</span>
+          </button>
 
-      <button class="home-tile" data-cat="recoltes">
-        <div class="tile-icon-box">
-          <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌸');">
+          <button class="compact-btn" data-cat="poissons">
+            <span class="compact-icon">
+              <img src="assets/icons/Poissons.webp" alt="" onerror="tryIconFallback(this, ['assets/icons/Peche_icone.webp', 'assets/icons/Poissons.png'], '🎣');">
+            </span>
+            <span class="compact-label">Poissons</span>
+          </button>
+
+          <button class="compact-btn" data-cat="recoltes">
+            <span class="compact-icon">
+              <img src="assets/icons/Cueillette.webp" alt="" onerror="tryIconExt(this, ['png', 'jpg'], '🌸');">
+            </span>
+            <span class="compact-label">Récoltes</span>
+          </button>
         </div>
-        <span class="tile-label">Récoltes</span>
-        <span class="tile-sub">Fleurs, matériaux, ingrédients</span>
-      </button>
+      </div>
     </div>
   </section>
 
-  <!-- 2. VUE DE CATÉGORIE -->
+  <!-- VUE DE CATÉGORIE -->
   <div id="appView" class="app-view">
     <div class="top-bar">
       <button class="back-home-btn" id="backHomeBtn">← Accueil</button>
@@ -625,12 +581,12 @@
     let searchText = "";
 
     const CATEGORIES = [
-      { id: "bestioles", label: "Bestioles", icon: "assets/icons/Bestioles_icone.webp", emoji: "🐾" },
-      { id: "compagnons", label: "Compagnons", icon: "assets/icons/Compagnons_icone.webp", emoji: "🐠" },
-      { id: "recettes", label: "Recettes", icon: "assets/icons/Cuisine_icone.webp", emoji: "🍽️" },
-      { id: "crafting", label: "Crafting", icon: "assets/icons/Crafting_icone.webp", emoji: "🛠️" },
-      { id: "poissons", label: "Poissons", icon: "assets/icons/Poissons.webp", emoji: "🎣" },
-      { id: "recoltes", label: "Récoltes", icon: "assets/icons/Cueillette.webp", emoji: "🌸" }
+      { id: "bestioles", label: "Bestioles", icon: "assets/icons/Bestioles_icone.webp", alts: ["assets/icons/Bestioles_icone.png"], emoji: "🐾" },
+      { id: "compagnons", label: "Compagnons", icon: "assets/icons/compagnons_icone.png", alts: ["assets/icons/Compagnons_icone.webp"], emoji: "🐠" },
+      { id: "recettes", label: "Recettes", icon: "assets/icons/Cuisine_icone.webp", alts: ["assets/icons/Cuisine_icone.png"], emoji: "🍽️" },
+      { id: "crafting", label: "Crafting", icon: "assets/icons/Artisanat_icone.webp", alts: ["assets/icons/Crafting_icone.webp"], emoji: "🛠️" },
+      { id: "poissons", label: "Poissons", icon: "assets/icons/Poissons.webp", alts: ["assets/icons/Peche_icone.webp"], emoji: "🎣" },
+      { id: "recoltes", label: "Récoltes", icon: "assets/icons/Cueillette.webp", alts: ["assets/icons/Cueillette.png"], emoji: "🌸" }
     ];
 
     const RECETTES_SUBS = ["Hors-d'oeuvre", "Plats principaux", "Desserts"];
@@ -642,13 +598,18 @@
       "ingrédients"
     ];
 
-    function handleDlcBgError(imgEl) {
-      if (!imgEl.dataset.triedSub) {
-        imgEl.dataset.triedSub = "1";
-        imgEl.src = "images/accueil/dlc_mer_des_souvenirs.jpg";
-        return;
+    function handleWelcomeImgError(imgEl) {
+      if (!imgEl.dataset.step) imgEl.dataset.step = "0";
+      const step = parseInt(imgEl.dataset.step, 10);
+      const fallbacks = [
+        "images/accueil/keep_sake_sea.png",
+        "images/accueil/keep_sake_sea.webp",
+        "dlc_mer_des_souvenirs.jpg"
+      ];
+      if (step < fallbacks.length) {
+        imgEl.dataset.step = String(step + 1);
+        imgEl.src = fallbacks[step];
       }
-      imgEl.style.display = "none";
     }
 
     function tryIconExt(imgEl, exts, fallbackEmoji) {
@@ -659,7 +620,18 @@
         const base = imgEl.src.replace(/\.(webp|png|jpg|jpeg)$/i, "");
         imgEl.src = `${base}.${exts[idx]}`;
       } else {
-        imgEl.parentElement.innerHTML = `<span class="tile-emoji">${fallbackEmoji}</span>`;
+        imgEl.parentElement.innerHTML = `<span class="emoji-fallback">${fallbackEmoji}</span>`;
+      }
+    }
+
+    function tryIconFallback(imgEl, list, fallbackEmoji) {
+      if (!imgEl.dataset.fbIdx) imgEl.dataset.fbIdx = "0";
+      const idx = parseInt(imgEl.dataset.fbIdx, 10);
+      if (idx < list.length) {
+        imgEl.dataset.fbIdx = String(idx + 1);
+        imgEl.src = list[idx];
+      } else {
+        imgEl.parentElement.innerHTML = `<span class="emoji-fallback">${fallbackEmoji}</span>`;
       }
     }
 
@@ -672,7 +644,6 @@
         .trim();
     }
 
-    /* Génère toutes les variantes possibles (NFC, NFD macOS, et extensions .webp/.png/.jpg) */
     function buildImageCandidates(rawSrc) {
       const nfc = rawSrc.normalize("NFC");
       const nfd = rawSrc.normalize("NFD");
@@ -745,7 +716,7 @@
         currentSubCat = null;
       }
 
-      document.getElementById("welcomeScreen").classList.add("hidden");
+      document.getElementById("homeScreen").classList.add("hidden");
       document.getElementById("appView").classList.add("active");
       window.scrollTo({ top: 0, behavior: "smooth" });
       renderCategoryView();
@@ -755,7 +726,7 @@
       currentCat = null;
       currentSubCat = null;
       document.getElementById("appView").classList.remove("active");
-      document.getElementById("welcomeScreen").classList.remove("hidden");
+      document.getElementById("homeScreen").classList.remove("hidden");
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -924,8 +895,8 @@
 
       if (!cards.length) {
         const emptyMsg = currentCat === "crafting" && !db.crafting.length
-          ? "Aucune fabrication ajoutée pour le moment — vos catégories s'afficheront ici dès qu'on ajoutera le craft."
-          : "Aucun élément trouvé dans cette catégorie.";
+          ? "Aucune fabrication ajoutée pour le moment."
+          : "Aucun élément trouvé dans cette rubrique.";
         target.innerHTML = `<div class="empty-box">${emptyMsg}</div>`;
       } else {
         target.innerHTML = `<div class="grid">${cards.join("")}</div>`;
@@ -949,8 +920,8 @@
         db = data;
       });
 
-    document.querySelectorAll(".home-tile").forEach(tile => {
-      tile.addEventListener("click", () => openCategory(tile.dataset.cat));
+    document.querySelectorAll(".compact-btn").forEach(btn => {
+      btn.addEventListener("click", () => openCategory(btn.dataset.cat));
     });
 
     document.getElementById("backHomeBtn").addEventListener("click", backToHome);
