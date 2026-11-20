@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guide Pratique — La Mer des Souvenirs (DDLV)</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --gold: #b45309;
+      --energy: #0369a1;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding: 18px;
+    }
+    header {
+      max-width: 1140px;
+      margin: 0 auto 22px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.55rem; margin-bottom: 6px; }
+    header p { color: var(--muted); font-size: 0.92rem; margin-bottom: 14px; }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    input[type="text"] {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      min-width: 230px;
+      font-size: 0.92rem;
+    }
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+    button {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      background: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+    button:hover { background: #f1f5f9; }
+    button.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    button.print-btn { background: #0f172a; color: #fff; border-color: #0f172a; }
+    main { max-width: 1140px; margin: 0 auto; }
+    .section-title {
+      font-size: 1.25rem;
+      margin: 26px 0 12px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--border);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(275px, 1fr));
+      gap: 14px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .card-title { font-weight: 700; font-size: 1rem; }
+    .card-sub { font-size: 0.78rem; color: var(--muted); font-style: italic; }
+    .stars { color: var(--gold); font-size: 0.9rem; white-space: nowrap; font-weight: 700; }
+    .img-wrap {
+      width: 100%;
+      height: 105px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .img-wrap img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    .img-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--muted);
+      padding: 6px;
+    }
+    .img-wrap.missing .img-fallback { display: flex; }
+    .details { font-size: 0.87rem; display: flex; flex-direction: column; gap: 3px; }
+    .footer-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-top: auto;
+      padding-top: 6px;
+      border-top: 1px solid #f1f5f9;
+    }
+    .energy { color: var(--energy); }
+    .price { color: var(--gold); }
+
+    @media print {
+      @page {
+        size: A5 portrait;
+        margin: 8mm;
+      }
+      body {
+        background: #ffffff !important;
+        padding: 0;
+        font-size: 9pt;
+      }
+      header {
+        border: none;
+        padding: 0 0 8px 0;
+        margin-bottom: 8px;
+      }
+      .controls, .no-print { display: none !important; }
+      .section-title { font-size: 11pt; margin: 12px 0 6px; }
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+      .card {
+        border: 1px solid #94a3b8;
+        padding: 8px;
+        background: #ffffff !important;
+      }
+      .img-wrap {
+        height: 68px;
+        border: none;
+      }
+      .img-wrap.missing { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Disney Dreamlight Valley — La Mer des Souvenirs</h1>
+    <p>Guide pratique : Compagnons, Recettes & Craft (Fond blanc • Format livret A5)</p>
+    <div class="controls">
+      <input type="text" id="search" placeholder="Rechercher un compagnon, plat, craft, ingrédient...">
+      <div class="filters">
+        <button class="active" data-cat="all">Tout</button>
+        <button data-cat="compagnons">Compagnons (3)</button>
+        <button data-cat="hors_doeuvre">Hors-d'œuvre (12)</button>
+        <button data-cat="entrees">Entrées (10)</button>
+        <button data-cat="desserts">Desserts (15)</button>
+        <button data-cat="craft">Craft (6)</button>
+      </div>
+      <button class="print-btn" onclick="window.print()">🖨️ Imprimer / Livret A5</button>
+    </div>
+  </header>
+
+  <main id="content"></main>
+
+  <script>
+    const sectionLabels = {
+      compagnons: "Compagnons (Animaux)",
+      hors_doeuvre: "Hors-d'œuvre",
+      entrees: "Entrées / Plats principaux",
+      desserts: "Desserts",
+      craft: "Craft & Ressources"
+    };
+
+    let guideData = null;
+    let activeCat = "all";
+    let query = "";
+
+    function renderCard(category, item) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const imgHtml = `
+        <div class="img-wrap" id="box-${item.id}">
+          <img src="${item.image}" alt="${item.fr}" onerror="this.style.display='none'; this.parentElement.classList.add('missing');">
+          <div class="img-fallback no-print">
+            <span>Image absente</span>
+            <code>${item.image}</code>
+          </div>
+        </div>
+      `;
+
+      if (category === "compagnons") {
+        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <div class="card-title">${item.fr}</div>
+              <div class="card-sub">${item.lieu}</div>
+            </div>
+            <span class="stars">🐾 ${item.comportement}</span>
+          </div>
+          ${imgHtml}
+          <div class="details">
+            <div><strong>Débloquer :</strong> ${item.debloquer}</div>
+            <div><strong>Approche :</strong> ${item.approche}</div>
+            <div><strong>Préférée :</strong> ${item.preferee}</div>
+            <div><strong>Appréciée :</strong> ${item.appreciee}</div>
+            <div><strong>Bonus :</strong> ${item.bonus}</div>
+          </div>
+        `;
+      } else if (category === "craft") {
+        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <div class="card-title">${item.fr}</div>
+              <div class="card-sub">${item.en}</div>
+            </div>
+            <span class="stars">${item.categorie}</span>
+          </div>
+          ${imgHtml}
+          <div class="details">
+            <div><strong>Ingrédients / Ressources :</strong> ${item.ingredients}</div>
+            <div><strong>Infos :</strong> ${item.notes}</div>
+          </div>
+        `;
+      } else {
+        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <div class="card-title">${item.fr}</div>
+              <div class="card-sub">${item.en}</div>
+            </div>
+            <span class="stars">${"★".repeat(item.stars)}</span>
+          </div>
+          ${imgHtml}
+          <div class="details">
+            <div><strong>Ingrédients :</strong> ${item.ingredients}</div>
+          </div>
+          <div class="footer-meta">
+            <span class="energy">⚡ ${item.energy}</span>
+            <span class="price">🪙 ${item.price}</span>
+          </div>
+        `;
+      }
+      return card;
+    }
+
+    function renderAll() {
+      if (!guideData) return;
+      const container = document.getElementById("content");
+      container.innerHTML = "";
+
+      Object.keys(sectionLabels).forEach(cat => {
+        if (activeCat !== "all" && activeCat !== cat) return;
+        const items = (guideData[cat] || []).filter(entry =>
+          JSON.stringify(entry).toLowerCase().includes(query.toLowerCase())
+        );
+        if (!items.length) return;
+
+        const sec = document.createElement("section");
+        sec.innerHTML = `<h2 class="section-title">${sectionLabels[cat]}</h2>`;
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        items.forEach(item => grid.appendChild(renderCard(cat, item)));
+        sec.appendChild(grid);
+        container.appendChild(sec);
+      });
+    }
+
+    fetch("data.json")
+      .then(res => res.json())
+      .then(json => {
+        guideData = json;
+        renderAll();
+      });
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".filters button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        activeCat = btn.dataset.cat;
+        renderAll();
+      });
+    });
+
+    document.getElementById("search").addEventListener("input", e => {
+      query = e.target.value;
+      renderAll();
+    });
+  </script>
+</body>
+</html>
